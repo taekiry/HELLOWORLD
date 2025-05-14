@@ -4,6 +4,12 @@ public class JSExe {
 
 	public static void main(String[] args) {
 		test2();
+
+		// 변경된 부분.
+		// 로컬의 수정사항, 원격의 수정사항이 다른 충돌발생
+		// 임의의 수를 생성. 1 ~ 100 사이의 임의의 값을 생성
+		//Math.random() * 10; // 0<=x<10 실수 생성
+		
 	}// end of main
 
 	public static void test() {
