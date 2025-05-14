@@ -11,6 +11,7 @@ public class JSExe {
 		sum += result;
 		}
 		System.out.println("결과: " + sum);
+
 	}// end of main
 	
 	public static void test() {
@@ -23,6 +24,7 @@ public class JSExe {
 		}
 		System.out.println("결과: " + sum);
 	}// end of test
+      
 	
 }// end of class.
 

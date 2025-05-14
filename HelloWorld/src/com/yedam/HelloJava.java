@@ -27,7 +27,6 @@ public class HelloJava {
 		System.out.println(20 + 30);
 		System.out.println("결과는 " + 20 + 30);   //문자열이 추가되면 문자열로 인식 
 		System.out.println("결과는 " + (20 + 30)); //int 타입부터 먼저 연산후 문자열추가
-		
-		
+			
 	}
 }
