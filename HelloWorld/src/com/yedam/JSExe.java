@@ -9,7 +9,6 @@ public class JSExe {
 		for (int i = 1; i <= 5; i++) {
 		int result = (int)(Math.random() * 10) + 1; //실수값을 정수로 casting (int)
 		sum += result;
-		
 		}
 		System.out.println("결과: " + sum);
 	}// end of main
