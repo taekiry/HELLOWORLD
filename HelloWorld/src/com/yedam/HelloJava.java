@@ -2,18 +2,20 @@ package com.yedam;
 
 //정렬 crtl+shift+f
 public class HelloJava {
+
 	public static void main(String[] args) {
-	// main적고 crtl+shift+enter
+	// main적고 crtl+space+enter
 	/* 기본 데이터타입
 	 * int : 정수
 	 * double : 실수
 	 * boolean: 참/거짓
 	 */
-		int num1 = 10;           //변수 num1을 초기화.(변수할당)
-		//int num1 = 10.0;       //compile시 에러나면 밑줄
+		
+		int num1 = 10;           // 변수 num1을 초기화.(변수할당)
+		//int num1 = 10.0;       // compile시 에러나면 밑줄
 		double num2 = 20;        // 자동형변환(promotion)이 발생 실수 > 정수
 		
-		//num1 = num2;           //데이터 타입 다름 실수 = 정수
+		//num1 = num2;           // 데이터 타입 다름 실수 = 정수
 		num1 = (int) num2;       // 강제형변환(casting)
 		
 		int num3 = 100;
