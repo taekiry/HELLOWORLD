@@ -3,11 +3,11 @@ package com.yedam;
 public class JSExe {
 	
 	public static void main(String[] args) {
-		// 임의의 수를 생성. 1 ~ 10 사이의 임의의 값을 생성
+		// 임의의 수를 생성. 1 ~ 100 사이의 임의의 값을 생성
 		//Math.random() * 10; // 0<=x<10 실수 생성
 		int sum = 0;
 		for (int i = 1; i <= 5; i++) {
-		int result = (int)(Math.random() * 10) + 1; //실수값을 정수로 casting (int)
+		int result = (int)(Math.random() * 100) + 1; //실수값을 정수로 casting (int)
 		sum += result;
 		}
 		System.out.println("결과: " + sum);
