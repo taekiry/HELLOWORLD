@@ -14,7 +14,8 @@ public class JSExe {
 		//test2(); // test2 메소드 호출
 		//test3();
         //test4();
-		test5();
+		//test5();
+		test6();
 		/*
 		int num1 = 20;
 		int num2 = 30;
@@ -147,15 +148,45 @@ public class JSExe {
 				result += " 입니다";
 				break;
 			} 
-			if (!first) {
-				result += ", ";
-			}
-			result += msg;
-			first = false;		
-		}// end of while
+			if (!first) {                         //  if(first) { 
+				result += ", ";                   //     result += msg;
+			}                                     //     first = false;
+			result += msg;                        //  } else {
+			first = false;		                  //     result += ", " + msg;
+		}// end of while                          //  }
 		System.out.println(result);
 		System.out.println("end of prog.");
 	}//end of test5호
 
+	public static void test6() {
+		
+		//printf("형식문자열", 값1, 값2....)
+		System.out.printf("%s %d\n","감자",30);   //%s(string) -> 뒤의 문자값을 받아오겠습니다. %d(digit) ->뒤 정수값 받아옴
+		System.out.printf("%s %.2f\n","감자",30.33); // %f -> 실수값 받아옴 /.2 -> 소수점 둘째자리까지
+		System.out.println("문자");               //113pg 표 \n -> 줄바꿈
+		
+		//"홍길동", 100, 23.9
+		System.out.printf("%s\n", "홍길동");
+		System.out.printf("%d\n", 100);
+		System.out.printf("%.1f\n",23.9);
+		
+		//안녕하세요 이름은 김태완입니다
+		//나이는 20세 입니다.
+		//몸무게는 67.8입니다.
+		
+		//System.out.printf("%s\n%s %d%s\n%s %.1f%s","안녕하세요 김태완입니다.","나이는",20,"세 입니다.","몸무게는",67.8,"입니다.");
+		
+		//System.out.printf("%s\n", "안녕하세요 김태완입니다.");
+		//System.out.printf("%s %d%s\n","나이는",20,"세 입니다.");
+		//System.out.printf("%s %d %s");
+		
+		//교수님
+		String formatStr = "안녕하세요 %s입니다.\n";
+		formatStr += "나이는 %d세입니다.\n";
+		formatStr += "몸무게는 %.1f입니다.\n";
+		System.out.printf(formatStr, "김태완",20,67.8);
+		
+		
+	}//end test6
 	
 }// end of class.
