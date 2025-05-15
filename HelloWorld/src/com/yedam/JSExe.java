@@ -123,7 +123,7 @@ public class JSExe {
 	public static void test5() {   //while문을 사용하여 홍길동,김민규,최석영 
 		                           //친구목록은 ooo,ooo ... 입니다.
 	    
-		Scanner scn = new Scanner(System.in);
+		/*Scanner scn = new Scanner(System.in);
 		String result = " ";   // = "친구목록은 "해도 누적됨.
 		while (true) {
 			System.out.println("친구이름 입력. 종료하려면 quit");
@@ -134,22 +134,28 @@ public class JSExe {
 			}
 			result += msg+",";
 			System.out.println("친구목록은 "+ result);
-		}// end of while
+		}// end of while*/
 		
 		//내방법도 확인해야함
-		/*Scanner scn = new Scanner(System.in);
-		String result = " ";   // = "친구목록은 "해도 누적됨.
+		Scanner scn = new Scanner(System.in);
+		String result = "친구목록은 ";   // = "친구목록은 "해도 누적됨.
+		boolean first = true;
 		while (true) {
 			System.out.println("친구이름 입력. 종료하려면 quit");
 			String msg = scn.nextLine();
 			if (msg.equals("quit")) {
+				result += " 입니다";
 				break;
-			} else {
-			result += msg+",";
+			} 
+			if (!first) {
+				result += ", ";
 			}
+			result += msg;
+			first = false;		
 		}// end of while
-		System.out.println("친구목록은 "+ result + "입니다");*/
+		System.out.println(result);
 		System.out.println("end of prog.");
 	}//end of test5호
+
 	
 }// end of class.
