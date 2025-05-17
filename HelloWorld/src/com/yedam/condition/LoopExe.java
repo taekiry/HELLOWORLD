@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class LoopExe {
 	public static void main(String[] args) {
 
-		
+
 		test01();
 		
 		// while문 VS do..while문
