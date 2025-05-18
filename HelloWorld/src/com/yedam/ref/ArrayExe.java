@@ -6,7 +6,7 @@ public class ArrayExe {
 
 	public static void main(String[] args) {
 
-		// strAry();
+	// strAry();
 		// delAry();
 		friendApp();
 	}// end main
