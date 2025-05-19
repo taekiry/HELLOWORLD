@@ -1,6 +1,6 @@
 import java.util.Scanner;
-
-public class review2 {
+	public class review2 {
+	
 	public static void main(String[] args) {
 		// test01();
 		// test02();
@@ -9,7 +9,7 @@ public class review2 {
 
 	public static void test01() {
 
-		
+		Scanner scn = new Scanner(System.in);
 		int randomValue = (int) (Math.random() * 1000) + 1;
 
 		System.out.println(randomValue);
@@ -71,9 +71,9 @@ public class review2 {
 			if (day % 7 == 3) {
 				System.out.println();
 			}
-
 		}
+		
 
 	}// end test03
-
+	
 }// end class
