@@ -62,6 +62,7 @@ public class MemberExe {
 			else if (menu == 2) {
 				System.out.print("수정할 아이디>>");
 				String modi = scn.nextLine();
+				
 				for(int i = 0; i < 100; i++) {
 					if(memberAry[i] != null && memberAry[i].id.equals(modi)) {
 						System.out.println("수정할 전화번호를 입력하세요");
