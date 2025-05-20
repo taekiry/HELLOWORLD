@@ -24,7 +24,7 @@ public class CalculatorExe {
 		
 		int[] numAry = {10,20,30};
 		sum = cal.add(numAry);
-		System.out.println(sum);
+		System.out.println(sum); //위에 더블로 선언해서
 		
 		//Member[] 중에서 point가 큰 회원을 반환
 		Member[] members = {new Member("user01","홍길동","1111",1000)

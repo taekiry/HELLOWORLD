@@ -17,7 +17,7 @@ public class Student { //static이 없는 class -> 반드시 인스턴스 선언
 	public Student() {
 		// ()안에 매개값이 없는 생성자 : 기본생성자
 		// 따로 정의하지않으면 컴파일러가 자동 생성
-		// 여러개 생성가능.
+		// 생성자 여러개 생성가능.
 	}
 	
 	public Student(int studentNo, String studentName) {

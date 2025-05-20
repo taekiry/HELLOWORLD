@@ -1,15 +1,22 @@
 package com.yedam.board;
 
+/*
+ * 게시판.
+ * Board : (필드) 글번호, 제목, 내용, 작성자.
+ * BoardExe: 추가, 수정, 삭제, 목록
+ * BoardApp: Main 메소드 실행클래스.
+ */
+
 import java.util.Scanner;
 
-public class BoardExe {
+public class BoardExe { //기본 메소드들을 저장해뒀다가 App class에서 사용
 	//필드
 	private Board[] boards; //boards에 여러가지 담아놓고 쓰기위해 Board 타입 배열로
 	private Scanner scn = new Scanner(System.in);
 	private int bno = 2;  	// 초기인덱스값이 2로 되어야 안덮어쓰지 
 	
 	//생성자
-	public BoardExe() {
+	public BoardExe() { //배열이 필드일 경우 생성자안에 필드의 크기 지정해야되나?
 		boards = new Board[100]; //boards라는 곳에 100개짜리Board 타입 배열을 할당
 		boards[0] = new Board(10,"날씨가 좋습니다","기온이 30도가 넘는데도","홍길동");
 		boards[1] = new Board(11,"집이 좋습니다","머리가 아파오기때문에","김민규");
@@ -112,7 +119,7 @@ public class BoardExe {
 		
 		//메뉴로 이동 or 상세보기
 		if(str.equals("q")) {
-			return;    		//boardList를 종료하면
+			return;    		//boardList에서 나오면 break -> while문 다시 실행
 		} else {
 			int no = Integer.parseInt(str);
 			//배열에서 글번호 조회
