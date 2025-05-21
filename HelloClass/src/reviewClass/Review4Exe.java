@@ -6,7 +6,7 @@ import java.util.Scanner;
 /*
  * 게시판.
  * Board : (필드) 글번호, 제목, 내용, 작성자.
- * BoardExe: 추가, 수정, 삭제, 목록
+ * BoardExe: 추가, 수정, 삭제, 목록 , 종료
  * BoardApp: Main 메소드 실행클래스.
  */
 
@@ -17,12 +17,12 @@ public class Review4Exe {
 	private int cnt = 0;
 	
 	//static Student[] scores = null; TodoExe와 다른방식 왜?
-	// 그 밑에 scores = new Student[studentNum]으로 개수가 지정됨.
+	// 그 밑에 scores = new Student[studentNum]으로 개수가 지정됨. 
 	
 	//생성자 
 	public Review4Exe(){
 		books = new Review4[100]; 
-		//위에 books가 null이어서 생성자로 공간을 만들어놔야함
+		//위에 books가 null이어서 공간지정해야되는데 그냥 기본생성자 안에 넣엇음. Review4[] books = new Review[100]; 해도됨.
 		//만약 riview4exe 생성자 안에 넣지않으면 execute 메서드에 넣어야한다. 
 		//실행할때마다 공간이 100개 생겨버림;
 	}
@@ -65,23 +65,24 @@ public class Review4Exe {
 	} //end execute
 	
 	void App1 () {
-		System.out.println("글번호 : ");
-		int storyNo = Integer.parseInt(scn.nextLine());
-		
-		System.out.print("제목 : ");
-		String title1 = scn.nextLine();
-
-		System.out.print("내용 : ");
-		String content1 = scn.nextLine();
-		
-		System.out.print("작성자 : ");
-		String writer1 = scn.nextLine();
+		int storyNo = userNo("글번호 ");
+		String title1 = userMsg("제목 ");
+		String content1 = userMsg("내용 ");
+		String writer1 = userMsg("작성자" );
 		
 		Review4 board = new Review4(storyNo,title1,content1,writer1);
-		
 		books[cnt++] = board;  //board라는 보따리를 review4 클래스 배열인 books에 하나씩 할당하겠다.
 	}
 	
-	
+	//String 값 반환 메소드
+		String userMsg(String msg) {
+		System.out.println(msg + ">> ");
+		return scn.nextLine();
+	}
+	//Int값 반환 메소드
+		int userNo(String msg) {
+			System.out.println(msg + ">> ");
+			return Integer.parseInt(scn.nextLine());
+		}
 	
 }//end Reiview4Exe
