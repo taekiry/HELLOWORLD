@@ -51,6 +51,8 @@ public class Review4Exe {
 			case 3:
 				
 			case 4:
+					App2();
+					break;
 				
 			case 5:
 				run = false;
@@ -73,6 +75,32 @@ public class Review4Exe {
 		Review4 board = new Review4(storyNo,title1,content1,writer1);
 		books[cnt++] = board;  //board라는 보따리를 review4 클래스 배열인 books에 하나씩 할당하겠다.
 	}
+	
+	void App2() {
+		// 목록 기능
+		//글번호     제목    작성자  (원래 내용은 상세보기란에 따로 있어야함)
+		//====================
+		//  1  날씨가 좋아요  홍길동
+		//  2  클래스 멋집!  김민규
+		//  3  자바어려움    박석민
+		//  4  그래도 열심히! 김민규
+		//---------------------------
+		//상세보기: 글번호입력, 메뉴로 이동(q)
+		//---------------------------
+		
+		//** 등록된 글이 없습니다 ** 4.목록
+		
+		System.out.println("글번호      제목     작성자");
+		System.out.println("======================");
+		for(int i = 0; i < books.length; i++) {
+			if(books[i] != null ) {
+				System.out.printf();
+			}
+		}
+		
+		
+	}//end of App2
+	
 	
 	//String 값 반환 메소드
 		String userMsg(String msg) {
