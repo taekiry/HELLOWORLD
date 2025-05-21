@@ -57,7 +57,7 @@ public class Board {
 
 	// boardExe의 목록에 출력. 글번호, 제목, 작성자로 간략출력
 	public void showInfo() {
-		System.out.printf("%3d %11s %4s\n",boardNo,title,writer);
+		System.out.printf("%3d %12s %4s\n",boardNo,title,writer);
 	}
 	
 	//상세보기

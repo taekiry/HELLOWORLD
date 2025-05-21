@@ -55,6 +55,12 @@ public class Review4 {
 		this.writer1 = writer1;
 	}
 	
+	public void showInfo() {
+		System.out.printf("%3d %12s %3s\n",storyNo,title1,writer1);
+	}
 	
-	
+	public void showInfoAll() {
+		System.out.printf("글번호 : %d\n제목 : %s\n내용 : %s\n글쓴이 : %s\n",
+				storyNo,title1,content1,writer1);
+	}
 }//end class review4

@@ -158,7 +158,7 @@ public class BoardExe { //기본 메소드들을 저장해뒀다가 App class에
 
 			// 메뉴로 이동 or 상세보기
 			if (str.equals("q")) {
-				break; //return; // boardList에서 나오면 break -> while문 다시 실행 break;쓰면 오류
+				break; // boardList에서 나오면 break -> while문 다시 실행 break;쓰면 오류
 			} else if (str.equals("n")) {
 				page++;
 			} else if (str.equals("n")){
@@ -207,6 +207,7 @@ public class BoardExe { //기본 메소드들을 저장해뒀다가 App class에
 				if(boards[i] != null && boards[i].getBoardNo() == bno) {
 					boards[i] = null;
 					System.out.println("삭제되었습니다.");
+					return;
 				} else {
 					System.out.println("삭제할 글이 없습니다");
 					return;
