@@ -67,6 +67,76 @@ public class Calendar {
 		}
 		return lastDay;
 	}
+
+	//윤년구하기
 	
+	static boolean isLeapYear(int year) {
+		if(year == 0) {
+			return false;
+		}
+		//내 방식
+//		if(year % 4 != 0) {
+//			return false;
+//		} else if(year % 100 != 0) {
+//			return true;
+//		} else if(year % 400 == 0) {
+//			return true;
+//		} else {
+//			return false;
+//		}	
+		// 효준씨 방식
+		if (year % 4 ==0) {
+			if (year % 100 == 0) {
+				if (year % 400 == 0) {
+					return true;
+				}
+			} else {
+				return true;
+			}
+		}
+		return false;	
+	} //end isLeapYear 
+	
+	
+//	else {
+//		if (year % 100 != 0) {
+//			System.out.printf("%d는 윤년입니다.",year);
+//		return true;
+//		} else {
+//			if(year % 400 == 0) {
+//				System.out.printf("%d는 윤년입니다.",year);
+//				return true;
+//			}
+//			System.out.printf("%d는 윤년이 아닙니다!",year);
+//			return false;
+//		}
+//	
+//   인터넷 참고
+//	if(a%4 == 0){
+//        if(a%400 != 0 && a%100 == 0)
+//            System.out.println("0");
+//        else
+//            System.out.println("1");
+//    }
+//    else{
+//        System.out.println("0");
+//    }
+	
+//	교수님 방식
+//	static boolean isLeapYear(int year) {
+//		// 윤년이면 true, 평년이면 false.
+//		boolean leapYear = true;
+//		if (year % 4 != 0) {
+//			leapYear = false;
+//		}
+//		if (leapYear && year % 100 == 0) {
+//			leapYear = false;
+//		}
+//		if (!leapYear && year % 400 == 0) {
+//			leapYear = true;
+//		}
+//		return leapYear;
+//		}
+//	} // end of isLeapYear.
 	
 }//end class

@@ -50,7 +50,6 @@ public class UserExe {
 				return true;
 			}
 		}
-		System.out.println("로그인 실패: 일치하지 않습니다.\n");
 		return false;
 	}
 	

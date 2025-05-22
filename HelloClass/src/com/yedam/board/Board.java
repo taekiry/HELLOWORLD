@@ -68,7 +68,7 @@ public class Board {
 		
 		String strFormat = "글 번호: %d      작성자 : %s\n";
 		strFormat += "제목: %s\n";
-		strFormat += "내용: %s";
+		strFormat += "내용: %s\n";
 		System.out.printf(strFormat,boardNo,writer,title,content);
 		
 	}

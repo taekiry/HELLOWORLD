@@ -7,6 +7,8 @@ package com.yedam.board;
  * BoardApp: Main 메소드 실행클래스.
  */
 
+
+//0522 예외발생 갱신
 public class BoardApp {
 	
 	public static void main(String[] args) {
