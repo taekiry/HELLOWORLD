@@ -1,4 +1,4 @@
-package com.yedam.member;
+package com.yedam.collection.app;
 
 /*
  * 항목(아이디, 이름, 전화번호, 포인트)
