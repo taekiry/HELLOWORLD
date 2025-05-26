@@ -23,9 +23,10 @@ public class SetExe {
 		//set.iterator(); 쓰려면 Iterator도 java.util에서 임포트해줘야함.
 		
 		while(iter.hasNext()) { //hasNext : iterator가 가져올게 있는지 없는지 boolean으로 반환.
-			String result = iter.next();	
+			String result = iter.next();	//가져올 객체 하나 가져옴. next();
 			System.out.println(result);
 			// SQL에 데이터가 몇개있는지 알수 없음. Iterator로 가져올 데이터가 있는지 없는지 확인할수있음.
+			
 		}
 		
 	}
