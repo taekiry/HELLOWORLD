@@ -13,7 +13,11 @@ public class Member {
 		this.age = age;
 	}
 
-
+	
+	public String toString1() {
+		// TODO Auto-generated method stub
+		return toString();
+	}
 
 	// 이름, 점수 같으면 논리적으로 동등한지 equals overriding.
 	

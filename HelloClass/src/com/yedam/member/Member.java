@@ -59,8 +59,7 @@ package com.yedam.member;
 	public Member(String memberId, int point) {
 		
 		this.memberId = memberId;
-		this.memberName = memberName;
-		this.phone = phone;
+	
 		this.point = point;
 	}
 

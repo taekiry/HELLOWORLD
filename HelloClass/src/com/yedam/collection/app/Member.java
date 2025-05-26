@@ -64,8 +64,14 @@ package com.yedam.collection.app;
 		this.point = point;
 	}
 
-	public Member(String string, String string2, String string3, int i) {
-		// TODO Auto-generated constructor stub
+	
+
+	public Member(String memberId, String memberName, String phone, int point) {
+		super();
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.phone = phone;
+		this.point = point;
 	}
 
 	public String getMemberId() {

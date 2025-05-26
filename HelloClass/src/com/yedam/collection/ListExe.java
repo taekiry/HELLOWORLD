@@ -82,7 +82,7 @@ public class ListExe {
 		}
 		// 목록출력.
 		for (int i = 0; i < members.size(); i++) {
-			System.out.println(members.get(i).toString());
+			System.out.println(members.get(i).toString()); //members의 목록을 String값으로 출력.
 		}
 		
 		
