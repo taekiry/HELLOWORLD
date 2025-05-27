@@ -56,7 +56,7 @@ public class StreamExe {
 			long start = System.currentTimeMillis();
 			while (true) {
 				int data = is.read(buf); // 1byte를 읽기 (buf)-> byte배열 크기만큼 읽기
-				if (data == -1) { // 읽어올 데이터 더이상없으면 -1 출력
+				if (data == -1) { //.read() 읽어올 데이터 더이상없으면 -1 출력
 					break;
 				}
 				os.write(buf); // 1byte를 쓰기.

@@ -22,7 +22,7 @@ import java.util.List;
  * 
  * 역직렬화(Deserialization) : 기본타입을 객체로 변환.
  */
-class Product implements Serializable { //ArrayList는 직렬화 가능하지만 Product는 불가기때문에 implements 해야함.
+class Product implements Serializable { //ArrayList는 직렬화 가능하지만 Product는 불가기때문에 implements 해야함.(인터페이스는 implements)
 	String productCode;
 	
 	public Product(String productCode) {
@@ -40,7 +40,7 @@ public class StreamExe4 {
 			ObjectInputStream ois = new ObjectInputStream(is);
 			
 			List<Product> list = (List<Product>)ois.readObject(); //ClassNotFoundException 발생가능.
-								 //Product타입의 list로 캐스팅 (object타입은 모든클래스의 상위 클래스기때문에 어떤형태로든 casting가능)
+								 //Product타입의 List로 캐스팅 (object타입은 모든클래스의 상위 클래스기때문에 어떤형태로든 casting가능)
 			for(Product product : list) {
 				System.out.println("상품코드: "+ product.productCode);
 				// 아까 공백으로 구분해서 저장하던 방법이 필요가 없어짐. 객체보조스트림이 있어서
