@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class CarDAO extends DAO {
-	//1. 출차
+	//1-1. 출차
 	public int start(String cName, String numPlate) {
 		String sql = "update car_tbl\r\n"
 				+ "    set    isExist = 0,\r\n"
@@ -28,8 +28,8 @@ public class CarDAO extends DAO {
 		return 0;
 	}
 	
-	
-	// 3. 등록
+	//1-2. 입차
+	// 2. 등록
 	public int insert(Car car) {
 		
 		String sql = "insert into Car_tbl(sort"
@@ -61,7 +61,7 @@ public class CarDAO extends DAO {
 		return 0;
 	}
 	
-	//4. 목록
+	//3. 목록
 	public List<Car> select() {
 		
 		String sql = "select * from car_tbl";
@@ -86,7 +86,7 @@ public class CarDAO extends DAO {
 		
 	}
 	
-	//5. 삭제
+	//4. 삭제
 	public int delete(String numPlate) {
 		
 		String sql = "delete from car_tbl"
