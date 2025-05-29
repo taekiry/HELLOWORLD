@@ -3,27 +3,32 @@ package PrivateProject;
 public class DriveList {
 	
 	//필드
-	String sort;
 	String numPlate;
 	String cName;
 	int dMile;
+	int isExist;
+	int accident;
 	
 	public DriveList() {}
+
+	public DriveList(String numPlate, int dMile, int isExist, int accident) {
+		this.numPlate = numPlate;
+		this.dMile = dMile;
+		this.isExist = isExist;
+		this.accident = accident;
+				
+	}
 	
-	public DriveList(String sort, String numPlate, String cName, int dMile) {
-		this.sort = sort;
+	public DriveList(String numPlate, String cName) {
+
+		
 		this.numPlate = numPlate;
 		this.cName = cName;
-		this.dMile = dMile;
+		
 	}
 
-	public String getSort() {
-		return sort;
-	}
 
-	public void setSort(String sort) {
-		this.sort = sort;
-	}
+
 
 	public String getNumPlate() {
 		return numPlate;
@@ -48,6 +53,24 @@ public class DriveList {
 	public void setdMile(int dMile) {
 		this.dMile = dMile;
 	}
+
+	public int getIsExist() {
+		return isExist;
+	}
+
+	public void setIsExist(int isExist) {
+		this.isExist = isExist;
+	}
 	
+	public int getAccident() {
+		return accident;
+	}
+	public void setAccident(int accident) {
+		this.accident = accident;
+	}
+	public String toString(DriveList end) {
+		
+		return "출차여부 : " + isExist;
+	}
 	
 }

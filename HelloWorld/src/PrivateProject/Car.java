@@ -15,11 +15,12 @@ public class Car {
 	int mile;
 	String insurance;
 	int isExist = 1;
+	int accident;
 	
 	//생성자
 	public Car() {}
 	
-	public Car(String sort, String type, String numPlate, int price, int mile, String insurance, int isExist) {
+	public Car(String sort, String type, String numPlate, int price, int mile, String insurance, int isExist, int accident) {
 		
 		this.sort = sort;
 		this.type = type;
@@ -28,16 +29,19 @@ public class Car {
 		this.mile = mile;
 		this.insurance = insurance;
 		this.isExist = isExist;
+		this.accident = accident;
+		
 	}
 	//getter & setter
 	
-	public Car(String sort2, String type2, String numPlate2, int price2, int mile2, String insurance2) {
+	public Car(String sort2, String type2, String numPlate2, int price2, int mile2, String insurance2, int accident) {
 		this.sort = sort2;
 		this.type = type2;
 		this.numPlate = numPlate2;
 		this.price = price2;
 		this.mile = mile2;
 		this.insurance = insurance2;
+		this.accident = accident;
 		
 	}
 
@@ -82,6 +86,12 @@ public class Car {
 	}
 	public void setIsExist(int isExist) {
 		this.isExist = isExist;
+	}
+	public int getaccident() {
+		return accident;
+	}
+	public void setAccident(int accident) {
+		this.accident = accident;
 	}
 	//sort + "    " + numPlate + "     "+ (isExist==0?"출차":"입차");
 	@Override

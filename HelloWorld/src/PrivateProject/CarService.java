@@ -10,6 +10,8 @@ public interface CarService {
 	public boolean addCar(Car car);
 	public List<Car> carList();
 	public boolean removeCar(String numPlate);
-	public boolean startDrive(String cName,String numPlate);
-	public boolean endDrive(String numPlate);
+	public boolean startDrive(DriveList dlt);
+	public boolean endDrive(DriveList dlt);
+	public List<DriveList> driveList();
+	
 }

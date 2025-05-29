@@ -4,15 +4,16 @@ import java.util.List;
 
 public class CarServiceDAO implements CarService {
 	CarDAO dao = new CarDAO();
-	
+
 	@Override
 	public boolean addCar(Car car) {
-		
+
 		return dao.insert(car) == 1;
 	}
+
 	@Override
 	public boolean removeCar(String numPlate) {
-	
+
 		return dao.delete(numPlate) == 1;
 	}
 
@@ -21,18 +22,20 @@ public class CarServiceDAO implements CarService {
 		return dao.select();
 	}
 
-
 	@Override
-	public boolean startDrive(String cName, String numPlate) {
-		return dao.start(cName, numPlate) == 1;
+	public boolean startDrive(DriveList dlt) {
+		return dao.start(dlt) == 1 && dao.start1(dlt) == 1;
 	}
 
 	@Override
-	public boolean endDrive(String numPlate) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean endDrive(DriveList dlt) {
+		return dao.end(dlt) == 1 && dao.end1(dlt) == 1;
 	}
-	
-	
+
+	@Override
+	public List<DriveList> driveList() {
+		
+		return dao.driveL();
+	}
 
 }
