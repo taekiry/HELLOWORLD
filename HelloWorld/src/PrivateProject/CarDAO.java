@@ -37,7 +37,9 @@ public class CarDAO extends DAO {
 	public int start1(DriveList dlt) {
 		String sql	= " update car_tbl "
 				+ " set isexist = 0 "
-				+ " where  SUBSTR(num_plate,-4,4) = ?";
+				+ " where  SUBSTR(num_plate,-4,4) = ?"
+				+ " and isexist = 1";
+				
 		getConnect();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -56,10 +58,11 @@ public class CarDAO extends DAO {
 	
 	public int end( DriveList end) {
 		String sql =  "update drive_list"
-				+ "    set  isexist = 1,"
-				+ "          d_mile = ?,"
+				+ "    set  isexist = 1 ,"
+				+ "          d_mile = ? ,"
 				+ "         accident = ?"
-				+ "    where SUBSTR(num_plate,-4,4) = ?";
+				+ "    where SUBSTR(num_plate,-4,4) = ?"
+				+ "    and isexist = 0";
 		getConnect();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -67,7 +70,7 @@ public class CarDAO extends DAO {
 			psmt.setInt(2, end.getAccident());
 			psmt.setString(3, end.getNumPlate());
 			int r = psmt.executeUpdate();
-			return r; // 건수반환.
+			return r; 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -80,7 +83,8 @@ public class CarDAO extends DAO {
 		
 		String sql	= " update car_tbl"
 				+ " set isexist = 1"
-				+ " where  SUBSTR(num_plate,-4,4) = ?";
+				+ " where  SUBSTR(num_plate,-4,4) = ?"
+				+ "and isexist = 0";
 		getConnect();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -177,9 +181,41 @@ public class CarDAO extends DAO {
 	}// end select
 	//3-1 상세목록
 	
-	public int showInfo(DriveList dlt);
-		String sql = 
-	
+	public CarInfo carInfo (String numPlate){
+		String sql = "select  d.sort \"차종\", "
+				+ "        c.type AS \"대소\", "
+				+ "        d.num_plate AS \"번호판\", "
+				+ "        c.mile + sum(d.d_mile)  AS \"총주행거리\", "
+				+ "        c.accident + sum(d.accident) As \"사고이력\", "
+				+ "        decode(c.type,'대형',300000,'소형',150000) + (sum(d.accident)+c.accident)*100000 AS \"보험료\",\r\n"
+				+ "        (c.price * 10000) - (sum(d.accident) + c.accident) * 100000 - (sum(d.d_mile) + c.mile) * (sum(d.accident) + c.accident) * 60 \"현재가치\"\r\n"
+				+ "from drive_list d join car_tbl c\r\n"
+				+ "                  on d.num_plate = c.num_plate\r\n"
+				+ "WHERE SUBSTR(d.num_plate,-4,4) = ?\r\n"
+				+ "GROUP BY d.sort,c.type,d.num_plate,c.mile,c.accident,c.price";
+		getConnect();	
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, numPlate);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				CarInfo cInfo = new CarInfo();
+				cInfo.setSort(rs.getString(1));
+				cInfo.setType(rs.getString(2));
+				cInfo.setNumPlate(rs.getString(3));
+				cInfo.setTotalMile(rs.getInt(4));
+				cInfo.setAccidentNum(rs.getInt(5));
+				cInfo.setInsurance(rs.getInt(6));
+				cInfo.setPv(rs.getInt(7));
+				return cInfo;
+			}
+		} catch( SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disConnect();
+		}
+		return null;
+	}
 	//4	. 삭제
 	public int delete(String numPlate) {
 		

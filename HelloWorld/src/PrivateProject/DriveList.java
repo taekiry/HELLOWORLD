@@ -11,10 +11,9 @@ public class DriveList {
 	
 	public DriveList() {}
 
-	public DriveList(String numPlate, int dMile, int isExist, int accident) {
+	public DriveList( int dMile,int accident,String numPlate) {
 		this.numPlate = numPlate;
 		this.dMile = dMile;
-		this.isExist = isExist;
 		this.accident = accident;
 				
 	}
@@ -68,9 +67,11 @@ public class DriveList {
 	public void setAccident(int accident) {
 		this.accident = accident;
 	}
-	public String toString(DriveList end) {
-		
-		return "출차여부 : " + isExist;
+	
+	@Override
+	public String toString() {
+		return "DriveList [numPlate=" + numPlate + ", cName=" + cName + ", dMile=" + dMile + ", isExist=" + isExist
+				+ ", accident=" + accident + "]";
 	}
 	
 }

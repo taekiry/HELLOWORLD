@@ -38,4 +38,17 @@ public class CarServiceDAO implements CarService {
 		return dao.driveL();
 	}
 
+	@Override
+	public List<CarInfo> carInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CarInfo showInfo(String numPlate) {
+		
+		return dao.carInfo(numPlate);
+	}
+
+
 }

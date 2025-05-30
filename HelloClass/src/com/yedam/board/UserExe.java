@@ -1,6 +1,6 @@
 package com.yedam.board;
 
-import java.util.Scanner;
+
 
 /*
  * User: (필드) 아이디, 비밀번호, 이름 

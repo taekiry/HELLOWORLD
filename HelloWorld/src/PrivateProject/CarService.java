@@ -13,5 +13,6 @@ public interface CarService {
 	public boolean startDrive(DriveList dlt);
 	public boolean endDrive(DriveList dlt);
 	public List<DriveList> driveList();
-	
+	public List<CarInfo> carInfo();
+	public CarInfo showInfo(String numPlate);
 }
