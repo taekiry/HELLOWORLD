@@ -19,7 +19,13 @@ public class CarServiceDAO implements CarService {
 
 	@Override
 	public List<Car> carList() {
-		return dao.select();
+		return dao.selectDefault();
+	}
+	public List<Car> carListPrice() {
+		return dao.selectPrice();
+	}
+	public List<Car> carListAccident() {
+		return dao.selectAccident();
 	}
 
 	@Override
@@ -48,6 +54,12 @@ public class CarServiceDAO implements CarService {
 	public CarInfo showInfo(String numPlate) {
 		
 		return dao.carInfo(numPlate);
+	}
+
+	@Override
+	public CustomerInfo customInfo(String cName) {
+		
+		return dao.customInfo(cName);
 	}
 
 

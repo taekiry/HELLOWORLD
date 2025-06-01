@@ -1,7 +1,5 @@
 package PrivateProject;
 
-import java.util.Date;
-
 /*
  * 필드 / 생성자/ 메소드.
  */
