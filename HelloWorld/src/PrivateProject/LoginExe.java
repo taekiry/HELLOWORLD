@@ -41,9 +41,10 @@ class Login {
 }//end Login
 public class LoginExe {
 
-	static Login[] users = { new Login("xozlfl789", "xodhks25", "사장"), 
-							 new Login("admin", "admin12", "서버관리자")
-
+	static Login[] users = { 
+			new Login("xozlfl789", "xodhks25", "사장"), 
+			new Login("admin", "admin12", "서버관리자"),
+			new Login("ad","ad12","관리자")
 	};
 
 	public static boolean Login(String id, String pw) {

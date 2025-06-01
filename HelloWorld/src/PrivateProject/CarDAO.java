@@ -3,14 +3,18 @@ package PrivateProject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CarDAO extends DAO {
 	// 1-1. 출차
 	public int start(DriveList dlt) {
-		String sql = "insert into drive_list(sort" + "                     ,num_plate" + "                      ,c_name"
-				+ "                      ,d_mile" + "                      ,isexist)"
-				+ " select c.sort, c.num_plate, ?,0,0" + " from car_tbl c" + " where SUBSTR(c.num_plate,-4,4) = ?";
+		String sql = "insert into drive_list(sort" 
+				+ "   ,num_plate" 
+				+ "   ,c_name"
+				+ "   ,d_mile" 
+				+ "   ,isexist)"
+				+ " select c.sort, c.num_plate, ?,0,0"
+				+ " from car_tbl c"
+				+ " where SUBSTR(c.num_plate,-4,4) = ?";
 
 		getConnect();
 		try {
@@ -30,7 +34,9 @@ public class CarDAO extends DAO {
 	}// end start
 
 	public int start1(DriveList dlt) {
-		String sql = " update car_tbl " + " set isexist = 0 " + " where  SUBSTR(num_plate,-4,4) = ?"
+		String sql = " update car_tbl "
+				+ " set isexist = 0 "
+				+ " where  SUBSTR(num_plate,-4,4) = ?"
 				+ " and isexist = 1";
 
 		getConnect();
@@ -50,8 +56,12 @@ public class CarDAO extends DAO {
 	// 1-2. 입차
 
 	public int end(DriveList end) {
-		String sql = "update drive_list" + "    set  isexist = 1 ," + "          d_mile = ? ," + "         accident = ?"
-				+ "    where SUBSTR(num_plate,-4,4) = ?" + "    and isexist = 0";
+		String sql = "update drive_list"
+				+ "    set  isexist = 1 ,"
+				+ "          d_mile = ? ,"
+				+ "         accident = ?"
+				+ "    where SUBSTR(num_plate,-4,4) = ?"
+				+ "    and isexist = 0";
 		getConnect();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -71,7 +81,10 @@ public class CarDAO extends DAO {
 
 	public int end1(DriveList end) {
 
-		String sql = " update car_tbl" + " set isexist = 1" + " where  SUBSTR(num_plate,-4,4) = ?" + "and isexist = 0";
+		String sql = " update car_tbl"
+				+ " set isexist = 1"
+				+ " where  SUBSTR(num_plate,-4,4) = ?"
+				+ "and isexist = 0";
 		getConnect();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -113,9 +126,15 @@ public class CarDAO extends DAO {
 	// 2. 등록
 	public int insert(Car car) {
 
-		String sql = "insert into Car_tbl(sort" + "                      ,type" + "                      ,num_plate"
-				+ "                      ,price" + "                      ,mile" + "                      ,insurance"
-				+ "                      ,isexist" + "                      ,accident)" + "   values (?,?,?,?,?,?,?,?)";
+		String sql = "insert into Car_tbl(sort"
+				+ "   ,type"
+				+ "   ,num_plate"
+				+ "   ,price"
+				+ "   ,mile"
+				+ "   ,insurance"
+				+ "   ,isexist"
+				+ "   ,accident)"
+				+ "   values (?,?,?,?,?,?,?,?)";
 		// 접속.
 		getConnect();
 		try {
@@ -243,7 +262,8 @@ public class CarDAO extends DAO {
 	// 4 . 삭제
 	public int delete(String numPlate) {
 
-		String sql = "delete from car_tbl" + "   where SUBSTR(num_plate,-4,4) = ?";
+		String sql = "delete from car_tbl"
+				+ "   where SUBSTR(num_plate,-4,4) = ?";
 		// 접속.
 		getConnect();
 		try {

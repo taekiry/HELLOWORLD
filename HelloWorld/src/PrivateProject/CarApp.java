@@ -141,6 +141,7 @@ public class CarApp {
 								System.out.println("🚓");
 								System.out.println("🚓");
 								System.out.println("🚓");
+								run2 = false;
 
 							} else if (submenu2.equals("p")) {
 								page--;
@@ -150,7 +151,7 @@ public class CarApp {
 								System.out.println("다시 입력하세요.");
 								continue;
 							}
-							run2 = false;
+							
 						}
 						break;
 					} else {
@@ -174,7 +175,7 @@ public class CarApp {
 					String insurance = scn.nextLine();
 					System.out.print("사고이력>> ");
 					int acc = Integer.parseInt(scn.nextLine());
-					// SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
+					
 					int isExist = 1;
 					Car car = new Car(sort, type, numPlate, price, mile, insurance, isExist, acc);
 					if (cvc.addCar(car)) {
@@ -300,7 +301,7 @@ public class CarApp {
 
 		} // end while
 		scn.close();
-		System.out.println("🚗🚗🚗🚗🚗 종료 합니다 🚗🚗🚗🚗🚗");
+		System.out.println("🚗🚗🚗🚗🚗🚗🚗🚗🚗 종료 합니다 🚗🚗🚗🚗🚗🚗🚗🚗🚗");
 
 	}// end execute
 
