@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.BoardMapper">
+
+	<!-- 조회(selectList) resultType Aliass config에 설정해둬서 원래는 com.yedam.vo.BoardVO -->
+	<select id="selectList" resultType="Board">
+		select * from tbl_board
+	</select>
+
+	<!-- 상세조회(한건) -->
+	<select id="selectBoard" resultType="Board" parameterType="int">
+		select board_no,
+		title,
+		content,
+		writer,
+		write_date,
+		read_cnt
+		from tbl_board
+		where board_no = #{bno}
+	</select>
+
+	<!-- 조회수 증가 -->
+	<update id="updateReadCnt" parameterType="int">
+		update tbl_board
+		set    read_cnt = read_cnt + 1
+		where board_no = #{bno}
+	</update>
+
+	<!-- 등록(insertBoard) -->
+	<!-- boardVO의 필드값들을 #{}로 작성 board_no는 시퀀스썻으니, 반환값은 건수 int임. -->
+	<insert id="insertBoard" parameterType="Board">
+		insert into tbl_board( board_no,
+		title,
+		content,
+		writer)
+		values (board_seq.nextval,
+		#{title},
+		#{content},
+		#{writer})
+	</insert>
+
+	<!-- 수정(updateBoard) -->
+	<!-- title = nvl(#{title}, title)와 같음 if태그 콤마도 if문안에 영향받아서 writer가 널이되면 
+		컴마 있는상태로 쿼리로 넘어가서 에러 따라서 set을 태그처리 알아서 컴마처리 -->
+	<update id="updateBoard" parameterType="Board">
+		update tbl_board
+		<set>
+			<if test="title != null">
+				title = #{title},
+			</if>
+			<if test="content != null">
+				content = #{content},
+			</if>
+			<if test="writer != null">
+				writer = #{writer}
+			</if>
+		</set>
+		where board_no = #{boardNo}
+	</update>
+
+	<!-- 삭제(deleteBoard) parameterType="int" -->
+	<delete id="deleteBoard" parameterType="int">
+		delete tbl_board
+		where board_no = #{boardNo}
+	</delete>
+
+
+</mapper>
