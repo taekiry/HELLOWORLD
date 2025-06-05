@@ -15,6 +15,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
 import com.yedam.mapper.BoardMapper;
+import com.yedam.service.BoardService;
+import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
 
 /*
@@ -49,16 +51,19 @@ public class BoardServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=utf-8"); //컨텐트 타입 지정.
 		System.out.println("service 메소드 호출");
-		SqlSession sqlSession = DataSource.getInstance().openSession(true); //openSession() -> true : 자동 commit
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		//요청할 페이지의 parameter ?bno=3 3번글 조회하려고.
 		String boardNo = req.getParameter("bno"); //매우매우중요
+//		SqlSession sqlSession = DataSource.getInstance().openSession(true); //openSession() -> true : 자동 commit
+//		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+//		//요청할 페이지의 parameter ?bno=3 3번글 조회하려고.
+//		
+//		//상세조회
+//		BoardVO board = mapper.selectBoard(Integer.parseInt(boardNo));
+//		//조회수 + 1
+//		mapper.updateReadCnt(Integer.parseInt(boardNo)); //count가 목록 보여주고 나서 카운트됨.
+//		//table 출력
 		
-		//상세조회
-		BoardVO board = mapper.selectBoard(Integer.parseInt(boardNo));
-		//조회수 + 1
-		mapper.updateReadCnt(Integer.parseInt(boardNo)); //count가 목록 보여주고 나서 카운트됨.
-		//table 출력
+		BoardService svc = new BoardServiceImpl();
+		BoardVO board = svc.getBoard(Integer.parseInt(boardNo));
 		PrintWriter out = resp.getWriter();
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		

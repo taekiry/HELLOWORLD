@@ -31,8 +31,13 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean registerBoard(BoardVO board) {
+		int r = mapper.insertBoard(board); //처리된 건수가 반환 r에 저장.
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
 		
-		return mapper.insertBoard(board) == 1;
 	}
 	
 }

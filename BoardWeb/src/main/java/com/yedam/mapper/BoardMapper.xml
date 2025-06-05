@@ -7,6 +7,8 @@
 	<!-- 조회(selectList) resultType Aliass config에 설정해둬서 원래는 com.yedam.vo.BoardVO -->
 	<select id="selectList" resultType="Board">
 		select * from tbl_board
+		order by board_no asc
+		
 	</select>
 
 	<!-- 상세조회(한건) -->

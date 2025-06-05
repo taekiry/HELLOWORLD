@@ -62,7 +62,7 @@ public class BoardList extends HttpServlet {
 	  //index 페이지로 이동.
 	    //out.print("<a href='../index.html'>인덱스페이지</a>");
 	    
-	    
+	    out.print("<a href='../html/addForm.html'>등록페이지</a>");
 	}
 	
 	
