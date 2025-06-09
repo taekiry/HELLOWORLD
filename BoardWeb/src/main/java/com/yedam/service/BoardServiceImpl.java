@@ -39,5 +39,15 @@ public class BoardServiceImpl implements BoardService {
 		return false;
 		
 	}
+
+	@Override
+	public boolean modifyBoard(BoardVO board) {
+		int r = mapper.updateBoard(board);
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
 	
 }

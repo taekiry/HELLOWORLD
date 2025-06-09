@@ -9,7 +9,7 @@ public interface BoardService { // 개인프로젝트 차량 출차시 출입명
 	public List<BoardVO> boardList();  //목록조회.
 	public BoardVO getBoard(int bno);
 	public boolean registerBoard(BoardVO board);	//mapper에서는 등록,삭제,업데이트가 int타입으로 고정
-	
+	public boolean modifyBoard(BoardVO board);
 	
 	
 	
