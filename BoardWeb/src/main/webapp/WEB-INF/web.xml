@@ -3,7 +3,7 @@
   <display-name>BoardWeb</display-name>
   
   <!-- 서블릿 & URL 패턴을 지정 (옛날방식) @WebServlet못할때 
-  .do로 끝나는 모든 서블릿을 실행하면 frontController로  -->
+  .do로 끝나는 모든 서블릿을 실행하면 frontController로 f -->
 <servlet>
 	<servlet-name>front</servlet-name>
 	<servlet-class>com.yedam.common.FrontController</servlet-class>
