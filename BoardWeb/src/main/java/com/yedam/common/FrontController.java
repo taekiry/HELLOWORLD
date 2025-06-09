@@ -14,6 +14,7 @@ import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.ModifyBoardControl;
+import com.yedam.control.RemoveBoardControl;
 /*
  * M.V.C 중 Controller
  * url패턴 - 실행서블릿 (key, value)형식으로 관리.
@@ -34,7 +35,8 @@ public class FrontController extends HttpServlet{
 		map.put("/boardList.do", new BoardListControl());   //글 목록
 		map.put("/board.do", new BoardControl());			//글 상세
 		map.put("/addBoard.do", new AddBoardControl());	    //글 추가
-		map.put("/modifyBoard.do", new ModifyBoardControl());      //글 수정
+		map.put("/modifyForm.do", new ModifyBoardControl());      //글 수정
+		map.put("/removeBoard.do", new RemoveBoardControl());      //글 삭제
 	}
 	
 	//

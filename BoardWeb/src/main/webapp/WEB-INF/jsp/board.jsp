@@ -4,7 +4,7 @@
 <jsp:include page="../include/header.jsp" />
 <% BoardVO board = (BoardVO) request.getAttribute("board"); %>
     <h3>상세화면(board.jsp)</h3>
-    <form action="modifyBoard.do">
+    <form action="modifyForm.do">
     <input type="hidden" name="bno" value="<%=board.getBoardNo() %>">
     <table class="table"><!--table.table-->
             <tr>
@@ -26,9 +26,16 @@
             <tr>
                 <td colspan="4" align="center">
                     <input type="submit" value="수정" class="btn btn-warning">
-                    <button class="btn btn-danger">삭제</button>
+                    <button class="btn btn-danger" type="button">삭제</button>
                 </td>
             </tr>
     </table>
-    </form>
+	</form>
+    <script>
+    let bno = "<%=board.getBoardNo() %>";
+    console.log(bno);
+    document.querySelector('button.btn-danger').addEventListener('click',function(){
+		location.href = 'removeBoard.do?bno='+bno;
+    })
+    </script>
     <jsp:include page="../include/footer.jsp" />

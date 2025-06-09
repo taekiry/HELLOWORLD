@@ -18,11 +18,11 @@ public class ModifyBoardControl implements Control{
 		
 		req.setCharacterEncoding("utf-8");
 		
-		String boardNo = req.getParameter("bno");
+		
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		
 		String bno = req.getParameter("bno");
+		
 		BoardService svc = new BoardServiceImpl();
 		if(req.getMethod().equals("GET")) { //get요청이면 화면 open / modifyBoard.do?bno=23 을 실행
 			
@@ -37,10 +37,10 @@ public class ModifyBoardControl implements Control{
 			board.setTitle(title);
 			board.setContent(content);
 			
-			if(svc.modifyBoard(board)) {
-				System.out.println("수정성공");
-				resp.sendRedirect("boardList.do"); //매개값x 페이지만 보여줄때 forward랑 다른점.
-			}
+			svc.modifyBoard(board) ;
+				
+			resp.sendRedirect("boardList.do"); //매개값x 페이지만 보여줄때 forward랑 다른점.
+			
 		}
 		
 	}//end exec

@@ -49,5 +49,15 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean removeBoard(int bno) {
+		int r = mapper.deleteBoard(bno);
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
 	
 }

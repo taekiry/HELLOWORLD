@@ -6,7 +6,7 @@
 <%
 BoardVO board = (BoardVO) request.getAttribute("board");
 %>
-<form action="modifyBoard.do" method="post">
+<form action="modifyForm.do" method="post">
 	<input type="hidden" name="bno" value="<%=board.getBoardNo()%>"> <!-- parameter 전달을 위해 안보이는 input -->
 	<table class="table">
 		<!--table.table-->
@@ -36,7 +36,5 @@ BoardVO board = (BoardVO) request.getAttribute("board");
 		</tr>
 	</table>
 </form>
-
-
 
 <jsp:include page="../include/footer.jsp" />
