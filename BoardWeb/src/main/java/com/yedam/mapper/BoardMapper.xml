@@ -8,9 +8,20 @@
 	<select id="selectList" resultType="Board">
 		select * from tbl_board
 		order by board_no asc
-		
+	
+	<!-- 조회 with Paging  ![CDATA[]] query AND <=의 오류 처리**"텍스트 그대로 해석하라"**-->
 	</select>
-
+	<select id="selectListWithPaging" resultType="Board" parameterType="int">
+	select b.*
+	from (select rownum rn, a.*
+     	  from  (select *
+                 from tbl_board
+                 order by board_no desc) a) b
+	      where b.rn > (#{page}-1) * 5
+	 <![CDATA[
+	and   b.rn <= #{page} * 5
+	]]>
+	</select>
 	<!-- 상세조회(한건) -->
 	<select id="selectBoard" resultType="Board" parameterType="int">
 		select board_no,

@@ -14,9 +14,8 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 	
 	@Override
-	public List<BoardVO> boardList() {
-		
-		return mapper.selectList();
+	public List<BoardVO> boardList(int page) {
+		return mapper.selectListWithPaging(page);
 	}
 
 	@Override
