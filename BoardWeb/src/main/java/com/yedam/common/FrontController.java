@@ -13,11 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.LoginControl;
+import com.yedam.control.LoginFormControl;
+import com.yedam.control.LogoutControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
-/*
- * M.V.C 중 Controller
+/* Model, View(jsp), Control
+ * M.V.C 중 Controller //mvc pattern2 -> controller servlet // mvc patter1 -> jsp로 servlet
  * url패턴 - 실행서블릿 (key, value)형식으로 관리.
+ * frontController는 서블릿.
  */
 public class FrontController extends HttpServlet{
 	//필드
@@ -37,13 +41,19 @@ public class FrontController extends HttpServlet{
 		map.put("/addBoard.do", new AddBoardControl());	    //글 추가
 		map.put("/modifyForm.do", new ModifyBoardControl());      //글 수정
 		map.put("/removeBoard.do", new RemoveBoardControl());      //글 삭제
+	//member관련
+		map.put("/loginForm.do", new LoginFormControl());	//로그인 화면
+		map.put("/login.do", new LoginControl()); 			//id,pw 로그인 처리
+		map.put("/logout.do", new LogoutControl());
+	
 	}
 	
 	//
 	@Override //url 호출(http://localhost:8080/BoardWeb/boardList.do) -> 페이지 호출 -> url중에서 ~.do를 파악 -> 그에맞는 control 반환.
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String uri = req.getRequestURI(); //uri : 8080뒤부터 끝까지.(BoardWeb/boardList.do)
-		String page = uri.substring(9);//BoardWeb/ 삭제
+		String context = req.getContextPath(); //다른 프로젝트 /helloworld -> 11자라서 substring시 9로는 출력안됨.
+		String page = uri.substring(context.length());//BoardWeb/ 삭제
 		Control sub = map.get(page); //map.get -> key 반환해주는 메소드
 		sub.exec(req,resp);
 		
