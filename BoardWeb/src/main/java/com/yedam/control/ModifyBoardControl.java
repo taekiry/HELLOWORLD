@@ -37,7 +37,7 @@ public class ModifyBoardControl implements Control{
 			board.setTitle(title);
 			board.setContent(content);
 			
-			svc.modifyBoard(board) ;
+			svc.modifyBoard(board);
 				
 			resp.sendRedirect("boardList.do"); //매개값x 페이지만 보여줄때 forward랑 다른점.
 			

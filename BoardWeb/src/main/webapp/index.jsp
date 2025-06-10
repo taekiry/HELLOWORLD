@@ -21,7 +21,7 @@
 	<%
 	} //end of for
 	BoardService svc = new BoardServiceImpl();
-	List<BoardVO> list = svc.boardList();
+	List<BoardVO> list = svc.boardList(1);
 	out.print("<ul>");
 	for (BoardVO board : list) {
 	%>

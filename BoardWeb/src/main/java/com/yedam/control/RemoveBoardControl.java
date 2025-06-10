@@ -18,13 +18,12 @@ public class RemoveBoardControl implements Control {
 		
 		BoardService svc = new BoardServiceImpl();
 		String bno = req.getParameter("bno");
-		if(req.getMethod().equals("GET")) { //get요청이면 화면 open / 
-		
-			if(svc.removeBoard(Integer.parseInt(bno))) {;
-				System.out.println("삭제 성공");
-				resp.sendRedirect("boardList.do");
-			}
+	//	req.getMethod().equals("GET"); //get요청이면 화면 open / 
+		if(svc.removeBoard(Integer.parseInt(bno))) {;
+			System.out.println("삭제 성공");
+			resp.sendRedirect("boardList.do");
 		}
 	}
-	
 }
+	
+
