@@ -1,3 +1,5 @@
+<%@page import="com.yedam.common.SearchDTO"%>
+<%@page import="com.yedam.common.PageDTO"%>
 <%@page import="com.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -5,9 +7,15 @@
 <h3>수정화면(modifyForm.jsp)</h3>
 <%
 BoardVO board = (BoardVO) request.getAttribute("board");
+String sc = (String) request.getAttribute("searchCondition");
+String kw = (String) request.getAttribute("keyword");
+String pg = (String) request.getAttribute("page");
 %>
 <form action="modifyForm.do" method="post">
 	<input type="hidden" name="bno" value="<%=board.getBoardNo()%>"> <!-- parameter 전달을 위해 안보이는 input -->
+	<input type="hidden" name="searchCondition" value="<%=sc %>">
+    <input type="hidden" name="keyword" value="<%=kw %>">
+    <input type="hidden" name="page" value="<%=pg %>">
 	<table class="table">
 		<!--table.table-->
 		<tr>

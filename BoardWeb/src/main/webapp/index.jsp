@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+	<jsp:forward page="LoginForm.do" />
 <body>
 	<%
 	//자바영역
@@ -21,7 +22,9 @@
 	<%
 	} //end of for
 	BoardService svc = new BoardServiceImpl();
-	List<BoardVO> list = svc.boardList(1);
+
+	List<BoardVO> list = svc.boardList(null);
+
 	out.print("<ul>");
 	for (BoardVO board : list) {
 	%>

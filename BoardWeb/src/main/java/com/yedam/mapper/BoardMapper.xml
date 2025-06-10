@@ -11,17 +11,29 @@
 	
 	<!-- 조회 with Paging  ![CDATA[]] query AND <=의 오류 처리**"텍스트 그대로 해석하라"**-->
 	</select>
-	<select id="selectListWithPaging" resultType="Board" parameterType="int">
+	<select id="selectListWithPaging" resultType="Board" parameterType="Search">
 	select b.*
 	from (select rownum rn, a.*
      	  from  (select *
                  from tbl_board
+                 <choose>
+                 	<when test="searchCondition != null and searchCondition == 'T'.toString()">
+                 	where title like '%'||#{keyword}||'%'
+                 	</when>
+                 	<when test="searchCondition != null and searchCondition == 'W'.toString()">
+                 	where writer like '%'||#{keyword}||'%'
+                 	</when>
+                 	<when test="searchCondition != null and searchCondition == 'TW'.toString()">
+                 	where (writer like '%'||#{keyword}||'%') or (title like '%'||#{keyword}||'%')
+                 	</when>
+                 </choose>
                  order by board_no desc) a) b
 	      where b.rn > (#{page}-1) * 5
 	 <![CDATA[
 	and   b.rn <= #{page} * 5
 	]]>
 	</select>
+	
 	<!-- 상세조회(한건) -->
 	<select id="selectBoard" resultType="Board" parameterType="int">
 		select board_no,
@@ -78,6 +90,22 @@
 		delete tbl_board
 		where board_no = #{boardNo}
 	</delete>
-
+	
+	<!-- 전체 글 개수 -->
+	<select id="selectCount" resultType="int" parameterType="Search">
+		select count(*)
+		from tbl_board
+		<choose>
+          <when test="searchCondition != null and searchCondition == 'T'.toString()">
+                      where title like '%'||#{keyword}||'%'
+          </when>
+          <when test="searchCondition != null and searchCondition == 'W'.toString()">
+                 	 where writer like '%'||#{keyword}||'%'
+          </when>
+          <when test="searchCondition != null and searchCondition == 'TW'.toString()">
+                 	where (writer like '%'||#{keyword}||'%') or (title like '%'||#{keyword}||'%')
+          </when>
+        </choose>
+	</select>
 
 </mapper>

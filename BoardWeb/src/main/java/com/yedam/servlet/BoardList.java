@@ -10,10 +10,6 @@
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 //
-//import org.apache.ibatis.session.SqlSession;
-//
-//import com.yedam.common.DataSource;
-//import com.yedam.mapper.BoardMapper;
 //import com.yedam.service.BoardService;
 //import com.yedam.service.BoardServiceImpl;
 //import com.yedam.vo.BoardVO;
