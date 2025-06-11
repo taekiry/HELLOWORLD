@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-	<jsp:forward page="LoginForm.do" />
 <body>
+	<jsp:forward page="LoginForm.do" />
 	<%
 	//자바영역
 	//sample.jsp -> sample_jsp.java -> sample_jsp.class 실행
