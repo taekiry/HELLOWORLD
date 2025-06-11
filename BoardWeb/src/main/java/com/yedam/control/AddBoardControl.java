@@ -23,7 +23,7 @@ public class AddBoardControl implements Control{
 		// 요청방식 Get or Post 구분 처리.
 		if (req.getMethod().equals("GET")) { //url에다가 enter치는 방식
 			// WEB-INF/jsp/addBoard.jsp Control을 통해서 실행
-			req.getRequestDispatcher("WEB-INF/jsp/addBoard.jsp").forward(req, resp); 
+			req.getRequestDispatcher("user/addBoard.tiles").forward(req, resp); 
 			// 현재페이지는 addBoard.do로 머물러야하지만 요청하는 페이지를 재지정하겠습니다. (포워드 메소드)
 		} else if (req.getMethod().equals("POST")) { //vs Code 활용한 form 태그에 메소드를 활용 -> method ="post"
 			// POST 요청

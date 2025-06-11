@@ -16,6 +16,7 @@ import com.yedam.control.BoardListControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
 import com.yedam.control.LogoutControl;
+import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
 /* Model, View(jsp), Control
@@ -45,7 +46,8 @@ public class FrontController extends HttpServlet{
 		map.put("/loginForm.do", new LoginFormControl());	//로그인 화면
 		map.put("/login.do", new LoginControl()); 			//id,pw 로그인 처리
 		map.put("/logout.do", new LogoutControl());
-	
+	//회원 목록	
+		map.put("/memberList.do", new MemberListControl());
 	}
 	
 	//
