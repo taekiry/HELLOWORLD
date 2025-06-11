@@ -51,7 +51,7 @@ public class BoardListControl implements Control{
 		req.setAttribute("search", search);
 
 		//forward : 포워딩페이지이동. /boardList.do 맵핑해서 BoardListControl이 실행. setAttribute로 데이터 값 저장 -> forward로 데이터 JSP로 전송.
-		req.getRequestDispatcher("WEB-INF/jsp/boardList.jsp").forward(req, resp);
+		req.getRequestDispatcher("user/boardList.tiles").forward(req, resp);
 		
 		
 	}//end exec

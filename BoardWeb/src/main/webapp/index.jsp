@@ -11,8 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="LoginForm.do" />
-	<%
+
+	<jsp:forward page="loginForm.do" />
+
+	
+
+
 	//자바영역
 	//sample.jsp -> sample_jsp.java -> sample_jsp.class 실행
 	String str = "Hello, World";
@@ -20,7 +24,7 @@
 	%>
 	<h3>HTML영역입니다.</h3>
 	<%
-	} //end of for
+	//} //end of for
 	BoardService svc = new BoardServiceImpl();
 
 	List<BoardVO> list = svc.boardList(null);

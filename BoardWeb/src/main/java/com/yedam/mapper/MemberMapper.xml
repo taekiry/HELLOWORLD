@@ -3,15 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.MemberMapper">
-
+<!-- 변수타입 $는 넘긴 값을 지정안하면 그대로 #은 정수면 정수타입으로 String이면 ''로 감싸줌 -->
 	<select id="selectMember" resultType="Member">
-		select member_id,
-		       member_name,
-		       password,
-		       responsibility
+		select member_id
+		      ,member_name
+		      ,password
+		      ,responsibility
 		from tbl_member
 		where member_id = #{id}
 		and   password = #{pw}
+	</select>
+
+	<!-- 회원목록 -->
+	<select id="selectList" resultType="Member">
+		select member_id
+		      ,member_name
+		      ,password
+		      ,responsibility
+		from tbl_member
+		order by ${order}
 	</select>
 
 </mapper>

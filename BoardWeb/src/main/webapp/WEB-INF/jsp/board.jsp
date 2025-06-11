@@ -3,7 +3,7 @@
 <%@page import="com.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../include/header.jsp" />
+
 <% BoardVO board = (BoardVO) request.getAttribute("board");
 	String sc = (String) request.getAttribute("searchCondition");
 	String kw = (String) request.getAttribute("keyword");
@@ -54,4 +54,4 @@
 		location.href = 'removeBoard.do?bno='+bno;
     })
     </script>
-    <jsp:include page="../include/footer.jsp" />
+ 
