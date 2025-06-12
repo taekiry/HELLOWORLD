@@ -11,15 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.AddBoardControl;
+import com.yedam.control.AddReplyControl;
 import com.yedam.control.AllControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.GetReplyControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
+import com.yedam.control.RemoveReplyControl;
+import com.yedam.control.ReplyListControl;
 /* Model, View(jsp), Control
  * M.V.C 중 Controller //mvc pattern2 -> controller servlet // mvc patter1 -> jsp로 servlet
  * url패턴 - 실행서블릿 (key, value)형식으로 관리.
@@ -52,6 +56,14 @@ public class FrontController extends HttpServlet{
 		
 	//상품 목록
 		map.put("/allProduct.do", new AllControl());
+		
+	//댓글(reply)관련 jsp파일 이제 안씀. json파일.
+		map.put("/replyList.do", new ReplyListControl());
+		map.put("/addReply.do", new AddReplyControl());
+		map.put("/removeReply.do", new RemoveReplyControl());
+		map.put("/getReply.do", new GetReplyControl());
+		
+		
 	}
 	
 	//
