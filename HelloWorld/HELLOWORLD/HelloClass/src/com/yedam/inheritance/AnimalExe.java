@@ -17,4 +17,3 @@ public class AnimalExe {
 		// 같은 메소드지만 다른 인스턴스 사용 -> 메소드의 다형성 
 	}
 }// end AnimalExe
-//확인해봅니다
