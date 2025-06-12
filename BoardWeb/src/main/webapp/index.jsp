@@ -12,31 +12,6 @@
 </head>
 <body>
 
-	<jsp:forward page="loginForm.do" />
+	<jsp:forward page="boardList.do" />
 
 	
-
-
-	//자바영역
-	//sample.jsp -> sample_jsp.java -> sample_jsp.class 실행
-	String str = "Hello, World";
-	for (int i = 0; i < 10; i++) {
-	%>
-	<h3>HTML영역입니다.</h3>
-	<%
-	//} //end of for
-	BoardService svc = new BoardServiceImpl();
-
-	List<BoardVO> list = svc.boardList(null);
-
-	out.print("<ul>");
-	for (BoardVO board : list) {
-	%>
-	<li><%=board.getBoardNo()%>,<%=board.getTitle()%></li>
-	<%
-	}
-	out.print("</ul>");
-	System.out.println(str);
-	%>
-</body>
-</html>

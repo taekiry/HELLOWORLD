@@ -26,8 +26,8 @@ public class MemberListControl implements Control {
 		List<MemberVO> list = svc.memberList(order);
 		req.setAttribute("memberList", list);
 		
-		// 출력 JSP
-		req.getRequestDispatcher("WEB-INF/jsp/member/memberList.jsp").forward(req,resp);
+		// 출력 JSP DB에서 loginControl에서 권한에 따른 페이지 이동이 일어남
+		req.getRequestDispatcher("admin/memberList.tiles").forward(req,resp);
 		
 	}
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.AddBoardControl;
+import com.yedam.control.AllControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.LoginControl;
@@ -48,6 +49,9 @@ public class FrontController extends HttpServlet{
 		map.put("/logout.do", new LogoutControl());
 	//회원 목록	
 		map.put("/memberList.do", new MemberListControl());
+		
+	//상품 목록
+		map.put("/allProduct.do", new AllControl());
 	}
 	
 	//

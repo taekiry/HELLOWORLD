@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
 import com.yedam.common.PageDTO;
@@ -37,7 +38,7 @@ public class BoardListControl implements Control{
 		search.setSearchCondition(sc);
 		search.setKeyword(kw);
 		
-		//
+		//데이터 처리
 		BoardService svc = new BoardServiceImpl();
 		List<BoardVO> list = svc.boardList(search);
 
@@ -51,7 +52,17 @@ public class BoardListControl implements Control{
 		req.setAttribute("search", search);
 
 		//forward : 포워딩페이지이동. /boardList.do 맵핑해서 BoardListControl이 실행. setAttribute로 데이터 값 저장 -> forward로 데이터 JSP로 전송.
-		req.getRequestDispatcher("user/boardList.tiles").forward(req, resp);
+		
+		HttpSession session = req.getSession(); //loginControl에서 session에 setAttribute로 권한값도 저장했음
+		String auth = (String) session.getAttribute("auth");
+		if(/*일반사용자(회원)*/ auth != null && auth.equals("User")) {
+			req.getRequestDispatcher("user/boardList.tiles").forward(req, resp); //user는 폴더x definition임
+		}
+		else if(/*관리자*/auth != null &&  auth.equals("Admin")) {
+			req.getRequestDispatcher("admin/board/boardList.tiles").forward(req, resp); //관리자로 로그인시 실행됨.
+		} else { //guest일 경우
+			req.getRequestDispatcher("user/boardList.tiles").forward(req, resp); 
+		}
 		
 		
 	}//end exec

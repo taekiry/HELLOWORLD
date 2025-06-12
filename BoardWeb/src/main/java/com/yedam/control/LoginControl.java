@@ -33,7 +33,7 @@ public class LoginControl implements Control{
 			
 			//request 요청정보 객체에서 서버로 쿠키심어둠 -> 쿠키정보 읽어와서 세션을 만듦 -> 로그인 정보 세션에 저장 
 			session.setAttribute("logId", member.getMemberId()); //setAttribute로 세션에 아이디 저장-> 로그인상태유지
-			
+			session.setAttribute("auth", member.getResponsibility());
 			//권한에 따라 시작페이지 지정.
 			if(member.getResponsibility().equals("User")) {
 				resp.sendRedirect("addBoard.do");
