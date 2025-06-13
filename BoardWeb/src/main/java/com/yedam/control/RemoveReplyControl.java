@@ -22,7 +22,7 @@ public class RemoveReplyControl implements Control {
 
 		if (svc.removeReply(Integer.parseInt(rno))) {
 			// {"retCode" : "Success"} returnCode .print(""안에 복붙)
-			resp.getWriter().print("{\"retCode\" : \"Success\"}");
+			resp.getWriter().print("{\"retCode\" : \"Success\"}"); //"{"retCode" : "Success"}": JSON 형식의 문자열을 직접 작성해서 보냄
 		} else {
 			// {"retCode" : "Fail"}
 			resp.getWriter().print("{\"retCode\" : \"Fail\"}");

@@ -14,7 +14,7 @@ public class AllControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.getRequestDispatcher("product/productList.tiles").forward(req,resp);
-		
+		// tiles를 호출 -> tiles.xml에 와일드카드 */*로 설정해둬서 템플릿 적용됨.
 	}
 
 	

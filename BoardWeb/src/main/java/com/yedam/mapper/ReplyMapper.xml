@@ -8,6 +8,7 @@
 		SELECT * FROM
 		TBL_REPLY
 		where board_no = #{bno}
+		order by reply_no desc
 	</select>
 
 	<!-- 단건조회 -->
@@ -19,12 +20,15 @@
 	</select>
 	<!-- 댓글 등록 -->
 	<insert id="insertReply" parameterType="Reply">
+		<selectKey keyProperty="replyNo" order="BEFORE" resultType="int">
+			select reply_seq.nextval from dual
+		</selectKey>
 		INSERT INTO TBL_REPLY (reply_no
 		                      ,board_no
 		                      ,reply
 		                      ,replyer
 		                      ,reply_date)
-		VALUES (REPLY_SEQ.NEXTVAL
+		VALUES (#{replyNo}
 		       ,#{boardNo}
 		       ,#{reply}
 		       ,#{replyer}
