@@ -1,5 +1,5 @@
 /**
- * ajax2.js
+ * ajax2.js (service.js에 정의된 메소드들로 기능실현.)
  */
 
 console.log(add(10, 20));
@@ -18,9 +18,8 @@ svc.replyList(239,   			//게시글 번호 service.js에 replyList 메소드 정
 		console.log(err);
 	});
 
-//삭제 메소드.
-
-function deleteReply(e) {
+//삭제 함수.
+function deleteReply(e) {				//makerow에 함수매개값으로 들어가서 함수로 선언해둬야됨.
 	let rno = e.target.parentElement.parentElement.dataset.rno;
 	svc.removeReply(rno,
 		function(result) {
@@ -37,8 +36,36 @@ function deleteReply(e) {
 }//end of deleteReplyFnc.
 
 
+//등록 이벤트.
+document.querySelector('#addReply').addEventListener('click', addReply);
 
-svc.removeReply(239, function() { });
+function addReply(e) {
+	const bno = document.querySelector('#bno').value;
+	const reply = document.querySelector('#reply').value;
+	if (!bno || !reply || !logId) { 						//logId는 prductList.jsp에 따로 선언해둠.
+		alert('필수값 입력!')
+		return;
+	}
+
+	//메소드 호출.
+	svc.addReply({ bno, reply, replyer: logId },		// 첫번째 매개값		//속성과 값이 다름 replyer만
+		function(result) {								// 두번째 매개값
+			if (result.retCode == 'Success') {
+				alert('등록성공!');
+				let tr = makeRowFnc(result.retVal);
+				let target = document.querySelector('table:nth-of-type(2) tbody tr');
+				document.querySelector('table:nth-of-type(2) tbody').insertBefore(tr, target);
+			} else {
+				alert('등록실패!');
+			}
+		},
+		function(err) {									// 세번째 매개값
+			console.error(err)
+		})
+
+
+};
+
 
 
 

@@ -90,7 +90,7 @@ function deleteReply(e) {
 	if(!confirm("삭제하겠습니까?")){
 		return;
 	}
-	//removeReply.do?rno=23형식 만들어야됨.
+	//removeReply.do?rno=239형식 만들어야됨.
 	let rno = e.target.parentElement.parentElement.dataset.rno; //ajax 호출 e.target = btn -> td -> tr의 data-rno를 저장
 	
 	fetch('removeReply.do?rno='+ rno)
@@ -104,7 +104,7 @@ function deleteReply(e) {
 			alert('삭제실패!');			
 		}
 	})
-	.catch(err => console.log(err));
+	.catch(err => console.error(err));
 	
 }
 
@@ -145,7 +145,7 @@ function addReply(e){
 			if(result.retCode == 'Success'){
 				alert('등록성공!');
 				let tr = makeRowFnc(result.retVal);
-				let target = document.querySelector('table:nth-of-type(2) tbody');
+				let target = document.querySelector('table:nth-of-type(2) tbody tr');
 				document.querySelector('table:nth-of-type(2) tbody').insertBefore(tr,target);
 			} else {
 				alert('등록실패!');
