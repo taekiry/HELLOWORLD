@@ -10,6 +10,7 @@ svc.replyList(239,   			//게시글 번호 service.js에 replyList 메소드 정
 	function(result) {			//성공 callback함수
 		console.log(result);
 		result.forEach(function(item) {
+			console.log(item);
 			let tr = makeRowFnc(item);
 			document.querySelector('table:nth-of-type(2) tbody').appendChild(tr);
 		})

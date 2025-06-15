@@ -18,7 +18,9 @@
 		Where reply_no = #{rno}
 
 	</select>
-	<!-- 댓글 등록 -->
+	<!-- 댓글 등록 selectKey는 마이바티스에서 실행-->
+	<!-- 1. 먼저 시퀀스를 실행해서 replyNo 값을 가져옴 -->
+	<!-- 2. 위에서 가져온 replyNo 값을 포함해서 INSERT 실행 -->
 	<insert id="insertReply" parameterType="Reply">
 		<selectKey keyProperty="replyNo" order="BEFORE" resultType="int">
 			select reply_seq.nextval from dual

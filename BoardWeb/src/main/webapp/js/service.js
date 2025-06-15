@@ -37,11 +37,11 @@ function makeRowFnc(item) {
 	let tr = document.createElement('tr');
 	tr.setAttribute('data-rno', item.replyNo);
 	//글번호,내용,작성자
-	for (let prop of ['replyNo', 'reply', 'replyer']) {
-		let td = document.createElement('td');
-		td.innerHTML = item[prop];
-		tr.appendChild(td);
-	}
+		for (let prop of ['replyNo', 'reply', 'replyer']) {
+			let td = document.createElement('td');
+			td.innerHTML = item[prop];
+			tr.appendChild(td);
+		}
 	//button 생성.
 	let td = document.createElement('td');
 	let btn = document.createElement('button');
