@@ -13,7 +13,7 @@
 		<![CDATA[
 		and   a.rn <= (#{page} * 5)
 		]]>
-		
+
 	</select>
 
 	<!-- 단건조회 -->
@@ -47,4 +47,11 @@
 		WHERE
 		REPLY_NO = #{rno}
 	</delete>
+	
+	<!-- 댓글 건수 조회 for page -->
+	<select id="selectTotal" parameterType="int" resultType="int">
+		select count(1)
+		from  tbl_reply
+		where board_no = #{bno}
+	</select>
 </mapper>

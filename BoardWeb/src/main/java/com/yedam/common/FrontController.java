@@ -23,6 +23,8 @@ import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
 import com.yedam.control.RemoveReplyControl;
+import com.yedam.control.ReplyCountControl;
+import com.yedam.control.ReplyInfoControl;
 import com.yedam.control.ReplyListControl;
 /* Model, View(jsp), Control
  * M.V.C 중 Controller //mvc pattern2 -> controller servlet // mvc patter1 -> jsp로 servlet
@@ -62,8 +64,8 @@ public class FrontController extends HttpServlet{
 		map.put("/addReply.do", new AddReplyControl());
 		map.put("/removeReply.do", new RemoveReplyControl());
 		map.put("/getReply.do", new GetReplyControl());
-		
-		
+		map.put("/replyCount.do", new ReplyCountControl());
+		map.put("/replyInfo.do", new ReplyInfoControl());
 	}
 	
 	//

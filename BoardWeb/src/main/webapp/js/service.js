@@ -13,8 +13,8 @@ const svc = {
 			.then(successCallback)
 			.catch(errorCallback);
 	},
-	removeReply(rno, successCallback, errorCallback) {
-		fetch('removeReply.do?rno=' + rno)
+	removeReply({rno, logId}, successCallback, errorCallback) {
+		fetch('removeReply.do?rno=' + rno + '&logId=' + logId)
 			.then(response => response.json())
 			.then(successCallback)
 			.catch(errorCallback);
@@ -27,10 +27,22 @@ const svc = {
 		})
 			.then(response => response.json())
 			.then(successCallback)
-			.catch(errorCallback)
+			.catch(errorCallback);
+	},
+	//댓글건수
+	replyCount(bno, successCallback, errorCallback){
+		fetch('replyCount.do?bno=' + bno)
+		.then(response => response.json())
+		.then(successCallback)
+		.catch(errorCallback);
 	}
-
-
+	// 댓글의 작성자정보등 가져오기.
+	/*replyInfo(rno, successCallback, errorCallback) {
+			fetch('replyInfo.do?rno=' + rno)
+				.then(data => data.json())
+				.then(successCallback)
+				.catch(errorCallback)
+		}*/
 }//end svc
 
 function makeRowFnc(item) {

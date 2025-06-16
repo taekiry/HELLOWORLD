@@ -11,4 +11,5 @@ public interface ReplyMapper {
 	public List<ReplyVO> selectReplyAll(@Param("bno") int bno, @Param("page") int page);
 	public ReplyVO selectReplyOne(int rno);
 	public int deleteReply(int rno);
+	public int selectTotal(int bno);
 }

@@ -43,4 +43,9 @@ public class ReplyServiceImpl implements ReplyService {
 		return false;
 	}
 
+	@Override
+	public int totalCount(int bno) { //댓글 건수
+		return mapper.selectTotal(bno);
+	}
+
 }

@@ -48,6 +48,10 @@ function pagingEvent() {
 			showReplyList();
 		})
 	});
+	document.querySelectorAll('#target li').forEach(elem => {
+		elem.addEventListener('mouseover', () => { elem.style.background = 'beige' });
+		elem.addEventListener('mouseout', () => { elem.style.background = '' });
+	})
 } // end of pagingEvent.
 // 댓글등록이벤트핸들러.
 function addReplyHandler(e) {
@@ -86,9 +90,9 @@ function showPageList() {
 			prev = start > 1;
 			next = end < realEnd;
 			// 기존 페이징 clear.
-			document.querySelector('nav ul.pagination').innerHTML = ""; // 지우기.
+			document.querySelector('nav ul.pagination-sm').innerHTML = ""; // 지우기.
 			// 페이지목록 출력.
-			let target = document.querySelector('nav ul.pagination');
+			let target = document.querySelector('nav ul.pagination-sm');
 			// 이전페이지.
 			let str;
 			if (prev) {
@@ -133,7 +137,7 @@ function showPageList() {
 function makeTemplate(reply = {}) {
 	let rdate = new Date(reply.replyDate).format();
 	template = `
-      <li data-rno=${reply.replyNo} data-replyer=${reply.replyer}>
+      <li data-rno=${reply.replyNo}>
         <span class="col-sm-1">${reply.replyNo}</span>
         <span class="col-sm-5">${reply.reply}</span>
         <span class="col-sm-1">${reply.replyer}</span>
@@ -144,24 +148,26 @@ function makeTemplate(reply = {}) {
 	return template; // <li>...</li> 반환.
 }
 // 댓글삭제함수.
-function deleteReply(e) {
+async function deleteReply(e) {
 	let rno = e.target.parentElement.parentElement.dataset.rno;
-	let replyer = e.target.parentElement.parentElement.dataset.replyer;
-	svc.removeReply({ rno, replyer }
+	let data = await fetch('replyInfo.do?rno=' + rno);
+	let result = await data.json();
+	if (result.replyer != logId) {
+		alert('권한없음!');
+		return;
+	}
+	// 권한이 있을 경우에 삭제함.
+	svc.removeReply(rno
 		, result => {
-			if (replyer == logId) {
-				if (result.retCode == "Success") {
-					alert("처리성공!");
-					//e.target.parentElement.parentElement.remove();
-					if(result.length == 0)
-					showReplyList();
-				} else {
-					alert("처리실패!");
-				}
+			if (result.retCode == "Success") {
+				alert("처리성공!");
+				//e.target.parentElement.parentElement.remove();
+				showReplyList();
 			} else {
-				alert("작성자와 아이디가 일치하지 않습니다!");
+				alert("처리실패!");
 			}
 		}
 		, err => console.log(err)
-	)
-} // end of deleteReply.
+	)// 삭제메소드.
+
+} // end of deleteReply./**
