@@ -4,11 +4,16 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.ReplyMapper">
 	<!-- 전체조회 -->
-	<select id="selectReplyAll" parameterType="int">
-		SELECT * FROM
-		TBL_REPLY
-		where board_no = #{bno}
-		order by reply_no desc
+	<select id="selectReplyAll">
+		SELECT a.*
+		from (SELECT /* +INDEX_DESC(r pk_ reply) */rownum rn, r.* 
+      			FROM  TBL_REPLY r
+      			where board_no = #{bno}) a
+		where a.rn > (#{page} - 1 ) * 5
+		<![CDATA[
+		and   a.rn <= (#{page} * 5)
+		]]>
+		
 	</select>
 
 	<!-- 단건조회 -->

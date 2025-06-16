@@ -20,7 +20,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>글번호</th>
+                    <th>댓글번호</th>
                     <th>댓글내용</th>
                     <th>작성자</th>
                     <th>삭제</th>

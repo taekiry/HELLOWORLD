@@ -1,6 +1,7 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +31,7 @@ public class AddReplyControl implements Control{
 		rvo.setBoardNo(Integer.parseInt(bno));
 		rvo.setReply(reply);
 		rvo.setReplyer(replyer);
+		rvo.setReplyDate(new Date());
 		//Map형식으로 담아서 retCode와 success or fail, retVal에 객체로 rvo도 보내려고
 		Map<String, Object> map = new HashMap<>();
 		// java 객체 -> json 문자열

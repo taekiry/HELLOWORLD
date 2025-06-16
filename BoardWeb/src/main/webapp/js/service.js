@@ -6,9 +6,9 @@ const svc = {
 	add: function(num1 = 0, num2 = 0) {
 		return num1 + num2;
 	},
-	replyList(bno, successCallback, errorCallback) {
+	replyList(param = {bno, page},successCallback, errorCallback) {
 		//ajax 호출.
-		fetch('replyList.do?bno=' + bno)
+		fetch('replyList.do?bno=' + param.bno + '&page=' + param.page)
 			.then(response => response.json())
 			.then(successCallback)
 			.catch(errorCallback);

@@ -12,7 +12,7 @@ public class AppTest {
 		ReplyService svc = new ReplyServiceImpl();
 		
 		// 목록.
-		List<ReplyVO> list = svc.replyList(239);
+		List<ReplyVO> list = svc.replyList(239,1);
 		for(ReplyVO reply : list) {
 			System.out.println(reply.toString());
 		}

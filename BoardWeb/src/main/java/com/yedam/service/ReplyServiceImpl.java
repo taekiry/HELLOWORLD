@@ -24,8 +24,8 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> replyList(int bno) {
-		return mapper.selectReplyAll(bno);
+	public List<ReplyVO> replyList(int bno, int page) {
+		return mapper.selectReplyAll(bno , page);
 	}
 
 	@Override
