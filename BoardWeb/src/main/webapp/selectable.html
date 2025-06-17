@@ -25,20 +25,32 @@
       select: async function(arg) {
         var title = prompt('Event Title:');
         if (title) {
-            calendar.addEvent({
-              title: title,
-              start: arg.start,
-              end: arg.end,
-              allDay: arg.allDay
-            })
-          
-          
+			let startStr = arg.startStr.substring(0,19);
+			let endStr = arg.endStr.substring(0,19);
+			let response = await fetch("addEvent.do?title="+title+"&start="+startStr+"&end="+endStr)
+			let data2 = response.json();
+			if( data2.retCode == "Success"){
+            	calendar.addEvent({
+             	 title: title,
+             	 start: arg.start,
+             	 end: arg.end,
+             	 allDay: arg.allDay
+            	})
+			}
           }
           calendar.unselect()
         },
-      eventClick: function(arg) {
+      eventClick: async function(arg) {
+			console.log(arg);
         if (confirm('Are you sure you want to delete this event?')) {
-          deleteEvent();
+			let startStr = arg.event.startStr;
+			let endStr = arg.event.endStr;
+    	    let title = arg.event.title;
+    		let response2 = await fetch("removeEvent.do?title="+title+"&start="+startStr+"&end="+endStr);
+    		let data3 = await response2.json();
+    		if(data3 == "Success"){
+            arg.event.remove();
+    		}
         }
       },
       editable: true,
@@ -51,22 +63,7 @@
     
   });
   
- /* await fetch("addEvent.do?title="+title+"&start="+arg.start+"&end="+arg.end)
-  .then(data => data.json())
-  .then(result => {
-	console.log(result)*/
-
-  function deleteEvent (){
-	let title = document.querySelector(".fc-event-title-container").innerHTML;
-	fetch("/removeEvent.do?title="+title)
-	.then(data => data.json())
-	.then(result => {
-		console.log(result);
-		if(result.retCode == "Success"){
-			arg.event.remove();
-		}
-	})
-  }
+  
 </script>
 <style>
 body {

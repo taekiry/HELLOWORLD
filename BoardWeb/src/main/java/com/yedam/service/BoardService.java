@@ -21,5 +21,5 @@ public interface BoardService { // 개인프로젝트 차량 출차시 출입명
 	//full calendar Event관련
 	public List<EventVO> eventList();
 	public boolean addEvent(EventVO evo);
-	public boolean removeEvent(String title);
+	public boolean removeEvent(EventVO evo);
 }

@@ -25,5 +25,5 @@ public interface BoardMapper {
 	//calendar
 	public List<EventVO> selectEvent();
 	public int insertEvent(EventVO evo);
-	public int deleteEvent(String title);
+	public int deleteEvent(EventVO evo);
 }

@@ -91,9 +91,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public boolean removeEvent(String title) {
-		int r = mapper.deleteEvent(title);
-		if( r == 1) {
+	public boolean removeEvent(EventVO evo) {
+		int r = mapper.deleteEvent(evo);
+		if( r >= 1) {
 			sqlSession.commit();
 			return true;
 		}

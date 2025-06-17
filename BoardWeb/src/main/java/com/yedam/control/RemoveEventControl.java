@@ -1,8 +1,6 @@
 package com.yedam.control;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,14 +21,21 @@ public class RemoveEventControl implements Control {
 		resp.setContentType("text/json;charset=utf-8");
 
 		String title = req.getParameter("title");
-	
+		String start = req.getParameter("start");
+		String end = req.getParameter("end");
+		
+		EventVO evo = new EventVO();
+		evo.setEnd(end);
+		evo.setStart(start);
+		evo.setTitle(title);
+		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(title);
 
 		BoardService svc = new BoardServiceImpl();
 		
 
-		if (svc.removeEvent(title)) {
+		if (svc.removeEvent(evo)) {
 			resp.getWriter().print("{\"retCode\" : \"Success\"}");
 		} else {
 			resp.getWriter().print("{\"retCode\" : \"Fail\"}");

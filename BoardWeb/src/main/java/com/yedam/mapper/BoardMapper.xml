@@ -125,13 +125,15 @@
 	</select>
 	<!-- 이벤트 등록 -->
 	<insert id="insertEvent" parameterType="Event">
-	insert into tbl_events(title,start_date as "start",end_date as "end")
+	insert into tbl_events(title,start_date,end_date)
 	values (#{title},#{start},#{end})
 	</insert>
 	
-	<delete id="deleteEvent" parameterType="String">
+	<delete id="deleteEvent" parameterType="Event">
 	delete tbl_events
 	where title = #{title}
+	and start_date = #{start}
+	and end_date = #{end}
 	
 	</delete>
 </mapper>
