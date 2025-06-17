@@ -1,6 +1,7 @@
 package com.yedam.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
@@ -16,5 +17,7 @@ public interface BoardMapper {
 	public int deleteBoard(int bno);
 	public BoardVO selectBoard(int bno);			//단건조회.
 	public int updateReadCnt(int bno);				//조회시 조회수 증가
+	//전체 건수
 	public int selectCount(SearchDTO search);
+	public List<Map> selectUserByCount();			// 작성자 카운트 담고있는 VO만들어도 됨.
 }

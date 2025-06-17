@@ -107,5 +107,13 @@
           </when>
         </choose>
 	</select>
-
+	<!-- 파이차트 만들기 위한 SQL문 -->
+	<select id="selectUserByCount" resultType="map">
+	select writer as "writer"
+	      ,member_name as "memberName"
+	      ,count(1) as "cnt"
+	from tbl_board b join tbl_member m 
+	on b.writer = m.member_id
+	group by writer,member_name
+	</select>
 </mapper>

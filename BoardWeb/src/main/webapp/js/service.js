@@ -70,5 +70,5 @@ function makeRowFnc(item) {
 // 위의 add는 svc객체의 속성으로서 함수(add메소드) //밑은 그냥 함수.
 const add = (num1, num2) => {
 	return num1 + num2;
-}
+};
 

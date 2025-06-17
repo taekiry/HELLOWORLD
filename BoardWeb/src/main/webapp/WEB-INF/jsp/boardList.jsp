@@ -7,29 +7,13 @@
 <!-- 코드 너무길어질까바 header, footer 따로 빼둠 -->
 <!--Attribute 값들 : 목록"blist" 페이지"pageInfo" 조건검색"search" -->
 
+<link href="//cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css" rel="stylesheet">
+<script src ="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="//cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
 <!-- <p>${pageInfo } ${blist } ${search }</p> -->
 <h3>게시글 목록</h3>
-<!-- 검색 조건 추가 -->
-<form action="boardList.do">
-	<div class="row">
-		<div class="col-sm-4">	 <!-- 부트스트랩 전체너비계산해서 4/12를 차지하게끔-->
-			<select name="searchCondition" class="form-control">
-				<option value="">선택하세요</option>
-				<option value="T" ${!empty search.searchCondition && search.searchCondition == "T" ? 'selected' : ''}>제목</option>
-				<option value="W"${!empty search.searchCondition && search.searchCondition == "W" ? 'selected' : ''}>작성자</option>
-				<option value="TW"${!empty search.searchCondition && search.searchCondition == "TW" ? 'selected' : ''}>제목&작성자</option>
-			</select>	
-		</div>
-	  <div class="col-sm-6">	 
-			<input type="text" name="keyword" value="${empty search.keyword ? '' : search.keyword}" class="form-control">
-		</div>
-		<div class="col-sm-2">	
-			<input type="submit" value="검색" class="btn btn-primary">
-		</div>
-	</div>
-</form>
 
-<table class="table">
+<table id="example" class="display">
 	<thead>
 		<tr>
 			<th>글번호</th>
@@ -50,47 +34,20 @@
 		</tr>
 		</c:forEach>
 	</tbody>
+	<tfoot>
+		<tr>
+			<th>글번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일시</th>
+			<th>조회수</th>
+		</tr>
+	</t>
 </table>
-<!-- paging 시작. boardList.do에는 parameter없어서 이것만 적용시 전체 게시글이 에러 -->
-<nav aria-label="Page navigation example">
-	<ul class="pagination justify-content-center">
-		<!-- 이전페이지 활성화. choose안에 when otherwise (if,else)-->
-		<c:choose>
-			<c:when test="${!pageInfo.prev }">
-				<li class="page-item disabled"><a class="page-link">Previous</a>
-				</li>
-			</c:when>
-			<c:otherwise>
-				<li class="page-item"><a class="page-link"
-				href="boardList.do?page=${pageInfo.start -1 }">Previous</a></li>
-			</c:otherwise>
-		</c:choose>
-		<!-- paging 정보를 활용 -->
-		<c:forEach var="p" begin="${pageInfo.start }" end="${pageInfo.end }">
-			<c:choose>
-				<c:when test="${p ne pageInfo.currentPage }">
-					<li class="page-item">
-					<a class="page-link" href="boardList.do?searchCondition=${search.searchCondition }&keyword=${search.keyword }&page=${p}">${p}</a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="page-item active" aria-current="page"><span
-					class="page-link">${p}</span> 
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
 
- 	    <!-- 이후페이지 활성화. --> 
- 		<c:choose>
-			<c:when test="${!pageInfo.next }">
-				<li class="page-item disabled"><a class="page-link">Next</a>
-				</li>
-			</c:when>
-			<c:otherwise>
-				<li class="page-item"><a class="page-link"
-				href="boardList.do?page=${pageInfo.end +1 }">Next</a></li>
-			</c:otherwise>
-		</c:choose>
-	</ul>
-</nav>
-<!-- paging 종료. -->
+<script>
+	let table = new DataTable('#example');
+	lengthMenu: [10, 25, 50, -1];
+
+</script>
 

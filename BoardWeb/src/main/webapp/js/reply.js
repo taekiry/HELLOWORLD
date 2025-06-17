@@ -16,25 +16,29 @@ Date.prototype.format = function() {
 		+ ('0' + hh).slice(-2) + ':' + ('0' + mm).slice(-2)// 
 	//+ ':' + ('0' + ss).slice(-2);
 }
-// 댓글목록 출력.
 showReplyList();
 function showReplyList() {
 	document.querySelector('#target').innerHTML = ""; // 목록지우기.
-	svc.replyList({ bno, page } //게시글번호
-		, result => {
-			let ul = document.querySelector('#target');
-			let template = document.querySelector('#target li');
-			console.log(result);
-			for (let reply of result) {
-				template = makeTemplate(reply);
-				//
-				ul.insertAdjacentHTML("beforeend", template);
+	// 건수체크해서 마지막 페이지가 맞는지 확인하기.
+	svc.replyCount(bno, (result) => {
+		console.log(result);
+		let lastPage = Math.ceil(result.totalCnt / 5);
+		page = page > lastPage ? lastPage : page; // 현재마지막 페이지 계산하기.
+		// 바뀐페이지로 목록출력하기.
+		svc.replyList({ bno, page } //게시글번호
+			, result => {
+				let ul = document.querySelector('#target');
+				let template = document.querySelector('#target li');
+				for (let reply of result) {
+					template = makeTemplate(reply);
+					ul.insertAdjacentHTML("beforeend", template);
+				}
+				// 댓글페이지.
+				showPageList();
 			}
-			// 댓글페이지.
-			showPageList();
-		}
-		, err => console.log(err)
-	);
+			, err => console.log(err)
+		);
+	}, (err) => { console.log(err) })
 } // end of showReplyList.
 // 이벤트.
 // 1)댓글등록이벤트.
@@ -88,7 +92,11 @@ function showPageList() {
 			// 기존 페이징 clear.
 			document.querySelector('nav ul.pagination').innerHTML = ""; // 지우기.
 			// 페이지목록 출력.
+			//if(totalCnt % 5 != 0){
 			let target = document.querySelector('nav ul.pagination');
+			//} else {
+				//target = document.querySelector('nav ul.pagination')
+			//}
 			// 이전페이지.
 			let str;
 			if (prev) {

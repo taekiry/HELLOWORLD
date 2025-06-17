@@ -1,6 +1,7 @@
 package com.yedam.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
@@ -14,5 +15,5 @@ public interface BoardService { // 개인프로젝트 차량 출차시 출입명
 	public boolean removeBoard(int bno);
 	//전체 글수 계산.
 	public int getTotalCount(SearchDTO search); // selectCount() mapper쪽에
-	
+	public List<Map> chartCount();
 }

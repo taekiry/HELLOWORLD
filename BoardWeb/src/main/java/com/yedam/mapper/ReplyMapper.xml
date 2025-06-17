@@ -9,13 +9,13 @@
 		from (SELECT /* +INDEX_DESC(r pk_ reply) */rownum rn, r.* 
       			FROM  TBL_REPLY r
       			where board_no = #{bno}) a
-		where a.rn > (#{page} - 1 ) * 5
+		where a.rn > (#{page} - 1 ) * 5 * 0
 		<![CDATA[
-		and   a.rn <= (#{page} * 5)
+		and   a.rn <= (#{page} * 50000)
 		]]>
 
 	</select>
-
+	
 	<!-- 단건조회 -->
 	<select id="selectReplyOne" parameterType="int">
 		SELECT * FROM
