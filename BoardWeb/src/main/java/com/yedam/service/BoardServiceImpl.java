@@ -9,6 +9,7 @@ import com.yedam.common.DataSource;
 import com.yedam.common.SearchDTO;
 import com.yedam.mapper.BoardMapper;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.EventVO;
 
 public class BoardServiceImpl implements BoardService {
 
@@ -72,6 +73,31 @@ public class BoardServiceImpl implements BoardService {
 	public List<Map> chartCount() {
 		
 		return mapper.selectUserByCount();
+	}
+
+	@Override
+	public List<EventVO> eventList() {
+		return mapper.selectEvent();
+	}
+
+	@Override
+	public boolean addEvent(EventVO evo) {
+		 int r = mapper.insertEvent(evo);
+		 if(r == 1) {
+			 sqlSession.commit();
+			 return true;
+		 } 
+		 return false;
+	}
+
+	@Override
+	public boolean removeEvent(String title) {
+		int r = mapper.deleteEvent(title);
+		if( r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
 	}
 
 

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.EventVO;
 
 /*
  * 인터페이스 - XML 매칭(패키지이름이 같아야함) ->인터페이스 네임으로 쿼리실행
@@ -20,4 +21,9 @@ public interface BoardMapper {
 	//전체 건수
 	public int selectCount(SearchDTO search);
 	public List<Map> selectUserByCount();			// 작성자 카운트 담고있는 VO만들어도 됨.
+	
+	//calendar
+	public List<EventVO> selectEvent();
+	public int insertEvent(EventVO evo);
+	public int deleteEvent(String title);
 }

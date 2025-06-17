@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.EventVO;
 
 public interface BoardService { // 개인프로젝트 차량 출차시 출입명부에 등록 + carlist에 출차 처리되는거처럼 
 								// 업무 ,service 단위로 묶음. 
@@ -16,4 +17,9 @@ public interface BoardService { // 개인프로젝트 차량 출차시 출입명
 	//전체 글수 계산.
 	public int getTotalCount(SearchDTO search); // selectCount() mapper쪽에
 	public List<Map> chartCount();
+	
+	//full calendar Event관련
+	public List<EventVO> eventList();
+	public boolean addEvent(EventVO evo);
+	public boolean removeEvent(String title);
 }

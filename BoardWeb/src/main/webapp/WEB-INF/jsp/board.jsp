@@ -80,6 +80,9 @@ div.reply span {
 
 		<div>
 			<!-- datatable 적용. -->
+			<p>
+				<button class="col-sm-1 btn btn-danger" id="delReply">삭제</button>
+			</p>
 			<table id="example" class="display">
 				<thead>
 					<tr>
@@ -142,6 +145,37 @@ const table = new DataTable('#example', {
 	order: [[0, 'desc']]
 });
 
+//삭제 메소드
+table.on('click', 'tbody tr', (e) => {  //jQuery 문법. eventListner임.
+    let classList = e.currentTarget.classList;
+ 	//console.log(classList);
+    if (classList.contains('selected')) { //classList의 selected가 있는지 확인 -> remove
+        classList.remove('selected');
+    }
+    else {
+        table.rows('.selected').nodes().each((row) => row.classList.remove('selected'));
+        classList.add('selected');
+    }
+});
+ 
+	document.querySelector('#delReply').addEventListener('click', async function (){
+	//삭제 ajax
+	if(!document.querySelector('tr.selected')) {
+		alert("댓글을 선택하세요!");
+	}
+	let rno = document.querySelector('tr.selected').children[0].innerHTML;
+	let data = await fetch("removeReply.do?rno="+rno);
+	let result = await data.json();
+	if(result.retCode == "Success"){
+		table.row('.selected').remove().draw(false);
+	} 
+	
+	});//end 삭제 이벤트 
+
+
+
+
+//등록
 function addNewRow() {
 	// ajax 호출
 	let reply = document.querySelector('#reply').value;

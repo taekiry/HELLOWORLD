@@ -116,4 +116,22 @@
 	on b.writer = m.member_id
 	group by writer,member_name
 	</select>
+	
+	<!-- Event SQL -->
+	<select id="selectEvent" resultType="Event">
+	select title,start_date as "start",end_date as "end"
+	from tbl_events
+	
+	</select>
+	<!-- 이벤트 등록 -->
+	<insert id="insertEvent" parameterType="Event">
+	insert into tbl_events(title,start_date as "start",end_date as "end")
+	values (#{title},#{start},#{end})
+	</insert>
+	
+	<delete id="deleteEvent" parameterType="String">
+	delete tbl_events
+	where title = #{title}
+	
+	</delete>
 </mapper>
