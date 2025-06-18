@@ -1,7 +1,6 @@
 package com.yedam.common;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +18,7 @@ import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.ChartControl;
 import com.yedam.control.ChartPageControl;
+import com.yedam.control.CheckControl;
 import com.yedam.control.EventListControl;
 import com.yedam.control.GetReplyControl;
 import com.yedam.control.LoginControl;
@@ -32,6 +32,7 @@ import com.yedam.control.RemoveReplyControl;
 import com.yedam.control.ReplyCountControl;
 import com.yedam.control.ReplyInfoControl;
 import com.yedam.control.ReplyListControl;
+import com.yedam.control.SignUpControl;
 /* Model, View(jsp), Control
  * M.V.C 중 Controller //mvc pattern2 -> controller servlet // mvc patter1 -> jsp로 servlet
  * url패턴 - 실행서블릿 (key, value)형식으로 관리.
@@ -61,8 +62,10 @@ public class FrontController extends HttpServlet{
 		map.put("/loginForm.do", new LoginFormControl());	//로그인 화면
 		map.put("/login.do", new LoginControl()); 			//id,pw 로그인 처리
 		map.put("/logout.do", new LogoutControl());
+		map.put("/checkId.do", new CheckControl());
 	//회원 목록	
 		map.put("/memberList.do", new MemberListControl());
+		map.put("/signup.do", new SignUpControl());
 		
 	//상품 목록
 		map.put("/allProduct.do", new AllControl());

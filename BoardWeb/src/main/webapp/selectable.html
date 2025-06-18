@@ -28,7 +28,7 @@
 			let startStr = arg.startStr.substring(0,19);
 			let endStr = arg.endStr.substring(0,19);
 			let response = await fetch("addEvent.do?title="+title+"&start="+startStr+"&end="+endStr)
-			let data2 = response.json();
+			let data2 = await response.json();
 			if( data2.retCode == "Success"){
             	calendar.addEvent({
              	 title: title,

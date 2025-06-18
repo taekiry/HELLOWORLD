@@ -4,7 +4,16 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
 	<display-name>BoardWeb</display-name>
-
+	<!-- 필터 서블릿보다 우선 선언되야함/ url패턴 정의 -->
+	<filter>
+		<filter-name>log</filter-name>
+		<filter-class>com.yedam.common.LogFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>log</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<listener>
 		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
 	</listener>

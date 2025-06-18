@@ -13,4 +13,9 @@ public interface MemberMapper {
 	
 	public List<MemberVO> selectList(@Param("order") String order);
 	
+	//회원 추가
+	public int insertMember(MemberVO member);
+	
+	//회원 아이디 체크
+	public MemberVO selectMemberInfo(String id);
 }

@@ -6,25 +6,33 @@
 	<div class="sidebar-heading border-bottom bg-light">Start
 		Bootstrap</div>
 	<div class="list-group list-group-flush">
-		<a class="list-group-item list-group-item-action list-group-item-light p-3"
-		href="boardList.do">게시글 목록</a>
-		<a class="list-group-item list-group-item-action list-group-item-light p-3"
-	    href="addBoard.do">글 등록화면</a>
+		<a
+			class="list-group-item list-group-item-action list-group-item-light p-3"
+			href="boardList.do">게시글 목록</a> <a
+			class="list-group-item list-group-item-action list-group-item-light p-3"
+			href="addBoard.do">글 등록화면</a>
 		<c:choose>
 			<c:when test="${empty logId }">
-				<a class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="loginForm.do">로그인 화면</a>
+				<a
+					class="list-group-item list-group-item-action list-group-item-light p-3"
+					href="loginForm.do">로그인 화면</a>
 			</c:when>
 			<c:otherwise>
-				<a class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="loginForm.do">로그아웃(${logId })</a>
+				<a
+					class="list-group-item list-group-item-action list-group-item-light p-3"
+					href="loginForm.do">로그아웃(${logId })</a>
 			</c:otherwise>
 		</c:choose>
-		<a class="list-group-item list-group-item-action list-group-item-light
-		p-3" href="allProduct.do">자바스크립트 연습</a> 
-		<a class="list-group-item list-group-item-action list-group-item-light p-3"
-		href="#!">Profile</a> 
-		<a class="list-group-item list-group-item-action list-group-item-light p-3"
-	    href="#!">Status</a>
+		<a
+			class="list-group-item list-group-item-action list-group-item-light p-3"
+			href="allProduct.do">자바스크립트 연습</a> <a
+			class="list-group-item list-group-item-action list-group-item-light p-3"
+			href="chartpage.do">차트</a> <a
+			class="list-group-item list-group-item-action list-group-item-light p-3"
+			href="selectable.html">캘린더</a> <a
+			class="list-group-item list-group-item-action list-group-item-light p-3"
+			href="signup.do">회원가입</a> <a
+			class="list-group-item list-group-item-action list-group-item-light p-3"
+			href="#!">Status</a>
 	</div>
 </div>

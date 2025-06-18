@@ -23,5 +23,21 @@
 		from tbl_member
 		order by ${order}
 	</select>
-
+	
+	<insert id="insertMember" parameterType = "Member">
+		insert into tbl_member ( member_id ,member_name,password, img)
+		values (#{memberId}, #{memberName}, #{password}, #{img})
+	</insert>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="selectMemberInfo" parameterType = "string" resultType="Member">
+		select member_id
+		      ,member_name
+		      ,password
+		      ,responsibility
+		      ,img 
+		from tbl_member
+		where member_id = #{id}
+	</select>
+	
 </mapper>
