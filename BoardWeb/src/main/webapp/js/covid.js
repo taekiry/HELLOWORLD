@@ -52,7 +52,7 @@ document.querySelector('button.btn-primary').addEventListener('click', function(
 				acc.appendChild(tr);
 			}
 			return acc; //return해야 다음 초기값으로들어감.
-		},document.querySelector('#centerList')) //, 다음 초기값
+		},document.querySelector('#centerList')) //, reduce함수의 초기값
 		//.filter((center) => center.centerName.indexOf(keyword) != -1)	//-1은 값이 없음을 의미 몇번째에 있냐 했는데 -1이니까
 		//.filter(center => center.centerName.includes(keyword))
 		//.forEach(center => {
